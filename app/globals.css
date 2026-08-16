@@ -54,6 +54,140 @@ body {
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
+/*
+ * Aurora field: large blurred colour blobs drifting behind the hero. The
+ * reference drives 15 of these from a requestAnimationFrame loop; these are
+ * CSS-only keyframes, so the main thread stays free and there is no JS to ship.
+ * Kept to the violet/cyan/indigo family — the reference's 15-colour rainbow
+ * would fight our two-colour identity.
+ */
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora span {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(64px);
+  opacity: 0.22;
+  will-change: transform;
+}
+
+.aurora span:nth-child(1) {
+  width: 24rem;
+  height: 24rem;
+  background: hsl(var(--primary));
+  top: -6rem;
+  left: -4rem;
+  animation: drift-a 26s ease-in-out infinite;
+}
+.aurora span:nth-child(2) {
+  width: 20rem;
+  height: 20rem;
+  background: hsl(var(--accent));
+  top: 2rem;
+  right: -5rem;
+  animation: drift-b 32s ease-in-out infinite;
+}
+.aurora span:nth-child(3) {
+  width: 18rem;
+  height: 18rem;
+  background: hsl(263 70% 60%);
+  bottom: -4rem;
+  left: 20%;
+  animation: drift-c 29s ease-in-out infinite;
+}
+.aurora span:nth-child(4) {
+  width: 16rem;
+  height: 16rem;
+  background: hsl(199 89% 55%);
+  top: 30%;
+  left: 45%;
+  animation: drift-b 36s ease-in-out infinite reverse;
+}
+.aurora span:nth-child(5) {
+  width: 14rem;
+  height: 14rem;
+  background: hsl(291 64% 62%);
+  bottom: 10%;
+  right: 15%;
+  animation: drift-a 24s ease-in-out infinite reverse;
+}
+
+@keyframes drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6vw, 4vh) scale(1.12);
+  }
+}
+@keyframes drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-5vw, 5vh) scale(0.92);
+  }
+}
+@keyframes drift-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(4vw, -4vh) scale(1.08);
+  }
+}
+
+/*
+ * Avatar: a conic-gradient ring that rotates, doubled as a blurred halo.
+ * The reference rotates it from JS; rotating the element in CSS gets the same
+ * result because the gradient is radially symmetric about the centre.
+ */
+.conic-ring {
+  background: conic-gradient(
+    hsl(var(--accent)),
+    hsl(291 64% 62%),
+    hsl(var(--primary)),
+    hsl(330 81% 70%),
+    hsl(var(--accent))
+  );
+  animation: spin 9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.avatar-glow {
+  box-shadow:
+    0 0 25px hsl(var(--accent) / 0.55),
+    0 0 55px hsl(var(--primary) / 0.4);
+}
+
+@keyframes cursor-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.type-cursor {
+  animation: cursor-blink 1.06s steps(1) infinite;
+}
+
 /* Section ground: a soft violet->cyan wash, strongest at the top of the page. */
 .hero-wash {
   background:
@@ -166,5 +300,17 @@ html {
   /* Glow and border still respond to hover; the scale jump does not. */
   .card-interactive:hover {
     transform: none;
+  }
+
+  /* Aurora keeps its colour wash but stops drifting; ring stops spinning. */
+  .aurora span,
+  .conic-ring {
+    animation: none;
+  }
+
+  /* A blinking caret is a classic motion trigger — leave it solid. */
+  .type-cursor {
+    animation: none;
+    opacity: 1;
   }
 }

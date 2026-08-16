@@ -1,4 +1,5 @@
 import { profile } from "@/lib/content";
+import Typewriter from "@/components/Typewriter";
 
 const links = [
   { label: "GitHub", href: profile.github },
@@ -8,24 +9,47 @@ const links = [
 
 export default function Hero() {
   return (
-    <section id="top" className="hero-wash px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-24">
-      <div className="mx-auto max-w-3xl text-center">
+    <section
+      id="top"
+      className="hero-wash relative flex min-h-[92svh] items-center justify-center overflow-hidden px-5 py-20 sm:px-8"
+    >
+      {/* Drifting colour field. Decorative only. */}
+      <div className="aurora" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-3xl text-center">
         {/* TODO: replace with a real photo (public/ilya.jpg) once available. */}
-        <div
-          aria-hidden="true"
-          className="glow mx-auto flex h-28 w-28 items-center justify-center rounded-full border border-border card-surface font-mono text-xs text-muted sm:h-32 sm:w-32"
-        >
-          photo
+        <div className="avatar-glow relative mx-auto h-40 w-40 rounded-full sm:h-56 sm:w-56">
+          <div
+            aria-hidden="true"
+            className="conic-ring absolute -inset-2 rounded-full opacity-60 blur-xl"
+          />
+          <div
+            aria-hidden="true"
+            className="conic-ring absolute inset-0 rounded-full"
+          />
+          <div className="absolute inset-[3px] flex flex-col items-center justify-center gap-1 rounded-full bg-background">
+            <span className="font-mono text-xs text-muted">photo</span>
+            <span className="font-mono text-[10px] text-muted/60">
+              1:1 crop
+            </span>
+          </div>
         </div>
 
-        <h1 className="animate-gradient mt-8 pb-1 text-4xl font-bold tracking-tight sm:text-6xl">
+        <h1 className="animate-gradient mt-10 pb-1 text-4xl font-bold tracking-tight sm:text-6xl">
           {profile.name}
         </h1>
 
-        <p className="mt-3 font-mono text-sm sm:text-base">
-          <span className="text-gradient font-medium">{profile.title}</span>
-          <span className="text-muted"> · {profile.location}</span>
-        </p>
+        <h2 className="mt-3 text-xl font-semibold text-foreground sm:text-2xl">
+          <Typewriter phrases={[...profile.roles]} />
+        </h2>
+
+        <p className="mt-2 font-mono text-sm text-muted">{profile.location}</p>
 
         <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-foreground sm:text-lg">
           {profile.positioning}

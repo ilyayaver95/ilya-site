@@ -70,6 +70,8 @@ export const projects: Projects = projectsJson;
 export type Profile = {
   name: string;
   title: string;
+  /** Typewriter phrases under the name. Each must be defensible against the CV. */
+  roles: string[];
   location: string;
   email: string;
   github: string;
