@@ -39,10 +39,14 @@ export type Education = {
 export type Project = {
   slug: string;
   name: string;
-  summary: string;
-  approach: string;
-  outcome: string;
-  skills: string[];
+  /** "Role @ Company" — anchors the work to a real position. */
+  role: string;
+  description: string;
+  /** Three short proof points; the last carries status and scale. */
+  highlights: string[];
+  tags: string[];
+  /** Optional "Explore …" link. Production DRS work has none — nothing public to link. */
+  cta?: { label: string; href: string };
   image: string | null;
   imageAlt: string;
 };
