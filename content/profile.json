@@ -1,0 +1,12 @@
+{
+  "name": "Ilya Yaverbaum",
+  "title": "AI/ML Engineer",
+  "location": "Tel Aviv, Israel",
+  "email": "ilya.yaver@gmail.com",
+  "github": "https://github.com/ilyayaver95",
+  "linkedin": "https://www.linkedin.com/in/ilya-yaverbaum",
+  "cv": "/cv.pdf",
+  "positioning": "ML engineer who builds LLM systems the way production ML gets built — deterministic where the answer is knowable, evaluated where it isn't, and instrumented either way.",
+  "background": "Radar and RF systems since 2015 — Unit 8200, then field engineering, data science and production ML at DRS RADA. The hardware, the data, and the model.",
+  "quote": "For every decision in an agent, ask: is the right answer enumerable?"
+}
