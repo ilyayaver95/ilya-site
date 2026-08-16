@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import Image from "next/image";
 import type { Project } from "@/lib/content";
 
@@ -17,7 +23,75 @@ const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
  * and never starts under prefers-reduced-motion. WCAG 2.2.2 also wants an
  * explicit control for moving content, so there is a real pause/play button.
  */
-export default function ProjectCarousel({ projects }: { projects: Project[] }) {
+/**
+ * The motion preference is external state that can change while the page is
+ * open, so it is read through useSyncExternalStore rather than mirrored into
+ * component state. The static export has no window, hence the server snapshot.
+ */
+function subscribeToMotionPreference(onChange: () => void) {
+  const query = window.matchMedia(REDUCED_MOTION);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+}
+
+function useReducedMotion() {
+  return useSyncExternalStore(
+    subscribeToMotionPreference,
+    () => window.matchMedia(REDUCED_MOTION).matches,
+    () => false,
+  );
+}
+
+/**
+ * Real footage in the media slot, muted and looping — a moving thumbnail gets
+ * watched where a static one gets skipped.
+ *
+ * `playsInline` is what lets iOS play it in place instead of hijacking the
+ * screen with the native player, and `preload="metadata"` keeps several cards'
+ * worth of video off the critical path. Under prefers-reduced-motion it holds
+ * on the poster frame and offers controls instead, so the card still shows
+ * something rather than going blank.
+ */
+function LoopingVideo({
+  src,
+  poster,
+  label,
+}: {
+  src: string;
+  poster?: string;
+  label: string;
+}) {
+  const reducedMotion = useReducedMotion();
+
+  return (
+    <div className="relative aspect-video w-full border-b border-border bg-black">
+      <video
+        // Remounting on the motion preference is what makes autoPlay actually
+        // take effect — toggling the attribute on a live element does not.
+        key={reducedMotion ? "still" : "playing"}
+        src={src}
+        poster={poster}
+        aria-label={label}
+        autoPlay={!reducedMotion}
+        controls={reducedMotion}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        className="h-full w-full object-contain"
+      />
+    </div>
+  );
+}
+
+export default function ProjectCarousel({
+  projects,
+  label,
+}: {
+  projects: Project[];
+  /** Names the track for screen readers — there is more than one carousel on the page. */
+  label: string;
+}) {
   const trackRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -88,7 +162,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
       onTouchStart={() => setPaused(true)}
       role="region"
       aria-roledescription="carousel"
-      aria-label="Production ML projects"
+      aria-label={label}
     >
       <ul
         ref={trackRef}
@@ -101,7 +175,13 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
             aria-roledescription="slide"
             aria-label={`${i + 1} of ${projects.length}`}
           >
-            {project.image ? (
+            {project.video ? (
+              <LoopingVideo
+                src={project.video}
+                poster={project.videoPoster}
+                label={project.imageAlt}
+              />
+            ) : project.image ? (
               <div className="relative aspect-video w-full border-b border-border bg-white">
                 <Image
                   src={project.image}
@@ -121,9 +201,10 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
             )}
 
             <div className="p-5 sm:p-6">
-              <h3 className="text-lg font-semibold transition-colors duration-300 group-hover:text-primary sm:text-xl">
+              {/* h4: the section is h2 and each track heading is h3. */}
+              <h4 className="text-lg font-semibold transition-colors duration-300 group-hover:text-primary sm:text-xl">
                 {project.name}
-              </h3>
+              </h4>
 
               <p className="mt-1 font-mono text-xs text-accent">
                 {project.role}

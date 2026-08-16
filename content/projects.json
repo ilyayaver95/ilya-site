@@ -10,7 +10,13 @@
         "Mislabel detection across prior annotations",
         "In production · ~50% less manual labeling"
       ],
-      "tags": ["Active Learning", "PyTorch", "MLflow", "Model Evaluation", "Python"],
+      "tags": [
+        "Active Learning",
+        "PyTorch",
+        "MLflow",
+        "Model Evaluation",
+        "Python"
+      ],
       "image": "/projects/active-learning.jpg",
       "imageAlt": "Active-learning loop: a model trains on the labeled data pool, identifies uncertain samples in the unlabeled pool, and requests human review, which feeds new labels back into training."
     },
@@ -24,7 +30,14 @@
         "Overfit / underfit region mapping",
         "Gates every release · ~3 bugs caught per model"
       ],
-      "tags": ["Model Evaluation", "Dash", "SciPy", "Optuna", "Hydra", "Experiment Tracking"],
+      "tags": [
+        "Model Evaluation",
+        "Dash",
+        "SciPy",
+        "Optuna",
+        "Hydra",
+        "Experiment Tracking"
+      ],
       "image": "/projects/performance-analysis.jpg",
       "imageAlt": "Lab versus production model behaviour side by side: clean converging accuracy curves in the lab, degraded and unstable curves in deployment, with a heatmap magnified to locate the failing regions."
     },
@@ -38,10 +51,94 @@
         "Noise and outlier reduction ahead of training",
         "In production · thousands of tracks recovered"
       ],
-      "tags": ["Time-Series Analysis", "Forecasting", "Anomaly Detection", "Statistical Analysis", "NumPy", "Pandas"],
+      "tags": [
+        "Time-Series Analysis",
+        "Forecasting",
+        "Anomaly Detection",
+        "Statistical Analysis",
+        "NumPy",
+        "Pandas"
+      ],
       "image": "/projects/anomaly-detection.jpg",
       "imageAlt": "The two costs of unrefined sensor data: a noisy time-series stream lengthening the training cycle, and anomalies hidden inside that noise reducing detection accuracy."
     }
   ],
-  "independent": []
+  "independent": [
+    {
+      "slug": "northbeam-support-copilot",
+      "name": "Northbeam Support Copilot",
+      "role": "Independent project",
+      "description": "A tool-calling support agent for a fictional radar company, built so a support engineer can ask in plain language and get an answer that shows its work. Twelve read-only tools in three layers — records, calculation, retrieval — run in a bounded loop; their real results become the evidence for one structured call. The interesting decision is the refusal layer: where the right answer is enumerable, deterministic rules decide the outcome rather than the model, so 62% of declines are settled in code and the card can say which rule fired.",
+      "highlights": [
+        "12 read-only tools across records, calculation and hybrid BM25 + embedding policy search",
+        "Deterministic refusal layer — 62% of declines decided in code, not by the model",
+        "196 offline tests · 77 graded evals · trace-based KPI dashboard"
+      ],
+      "tags": [
+        "Python",
+        "Tool calling",
+        "RAG",
+        "BM25 + embeddings",
+        "Evals",
+        "Observability"
+      ],
+      "cta": {
+        "label": "Read the code",
+        "href": "https://github.com/ilyayaver95/northbeam-support-copilot"
+      },
+      "image": "/projects/northbeam-copilot.jpg",
+      "imageAlt": "The copilot's operational KPI dashboard: latency and token counts per call, tool-usage bars, and a breakdown of which outcomes were decided in code rather than by the model.",
+      "video": "/projects/northbeam-copilot.mp4",
+      "videoPoster": "/projects/northbeam-copilot.jpg"
+    },
+    {
+      "slug": "beat-the-aspp",
+      "name": "Beat the ASPP",
+      "role": "Independent project",
+      "description": "Multi-agent equity research that decomposes the problem the way a research desk does. Three specialist agents — technical, fundamental, sentiment — run in parallel, each with its own tools and Pydantic-enforced output, then a strategist agent reconciles them into one verdict. The decision worth stealing is two-stage write-then-extract: Opus writes the narrative, Sonnet extracts the JSON, which holds the quality and costs roughly five times less than asking one model for both.",
+      "highlights": [
+        "Three analyst agents in parallel; a strategist reconciles one defensible verdict",
+        "Opus writes the prose, Sonnet extracts the JSON — same quality, ~5× cheaper",
+        "Provider abstraction across Anthropic / Groq / Ollama, with per-call cost telemetry"
+      ],
+      "tags": [
+        "Multi-agent",
+        "Pydantic",
+        "Anthropic / Groq / Ollama",
+        "SQLAlchemy",
+        "Streamlit"
+      ],
+      "cta": {
+        "label": "Read the code",
+        "href": "https://github.com/ilyayaver95/beat_the_aspp"
+      },
+      "image": null,
+      "imageAlt": "Orchestrator fanning out to technical, fundamental and sentiment agents in parallel, whose structured outputs feed a synthesizer that emits a single scored report."
+    },
+    {
+      "slug": "menu-alchemist",
+      "name": "Menu Alchemist",
+      "role": "Independent project",
+      "description": "Photograph a drink or a menu and get the reconstructed recipe — ingredients, steps, glassware, estimated ABV — plus a shopping list of only what you don't already own. The split is the point: the vision model does extraction and nothing else, while pantry detection, package sizing, serving maths and retailer matching are pure Python, so the part that has to be right every time is unit-tested rather than prompted.",
+      "highlights": [
+        "Pluggable vision providers behind one interface — Gemini, local Ollama, or a fake for tests",
+        "Vision model extracts; deterministic Python decides what actually reaches the buy list",
+        "86 tests that need no network and no API key · installable PWA · deployed on Render"
+      ],
+      "tags": [
+        "FastAPI",
+        "Gemini",
+        "Pydantic",
+        "SQLAlchemy",
+        "PWA",
+        "pytest"
+      ],
+      "cta": {
+        "label": "Read the code",
+        "href": "https://github.com/ilyayaver95/the_alchemist_lens"
+      },
+      "image": null,
+      "imageAlt": "Photo and menu text entering a vision model, whose structured recipe passes through deterministic Python that filters out pantry staples before emitting a grouped buy list."
+    }
+  ]
 }
