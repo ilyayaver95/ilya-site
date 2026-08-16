@@ -112,8 +112,10 @@
         "label": "Read the code",
         "href": "https://github.com/ilyayaver95/beat_the_aspp"
       },
-      "image": null,
-      "imageAlt": "Orchestrator fanning out to technical, fundamental and sentiment agents in parallel, whose structured outputs feed a synthesizer that emits a single scored report."
+      "image": "/projects/beat-the-aspp.jpg",
+      "imageAlt": "The app in use: a holdings table and allocation breakdowns, a per-position trade chart, and the analyst panel running a scan across a watchlist of tickers.",
+      "video": "/projects/beat-the-aspp-loop.mp4",
+      "videoPoster": "/projects/beat-the-aspp.jpg"
     },
     {
       "slug": "menu-alchemist",
