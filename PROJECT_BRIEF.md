@@ -72,6 +72,16 @@ resume bullets, nothing beyond.
 Northbeam is built on a fully synthetic, fictional company, which sidesteps this
 entirely. That fact should be the **first line** of its card, not a footnote.
 
+**Images are part of this constraint, not an exception to it.** The production-ML
+carousel has a 16:9 image slot per card. It must never hold a screenshot of
+internal tooling, a radar display, a labeling UI, or a plot of real data —
+"no screenshots" above covers these. Cleared: abstract or self-made
+illustrations, generic stock, or diagrams drawn from scratch that show only the
+method already described in the CV bullet. When in doubt the slot stays empty;
+`image: null` renders a labelled placeholder, which is a better outcome than an
+uncleared image on a public site. Anything sourced from work needs employer
+sign-off before it ships.
+
 ---
 
 ## Site structure
@@ -244,8 +254,11 @@ active-learning concept. Nobody else in this space has one and it is uniquely hi
 2. [~] Deploy to Vercel — import pending, then point `ilyayaverbaum.com` DNS at
        it from GoDaddy. Read the records off Vercel; never guess the values.
 3. [x] Hero + experience + skills + education, restyled to the reference palette.
-4. [ ] Project cards + case-study routes. **Blocked** on the prerequisites
-       below — repos public, copy written.
+4. [~] Project cards. Production-ML track (DRS RADA) is built as a scroll-snap
+       carousel driven by `content/projects.json`, copy taken strictly from the
+       CV bullets, image slots awaiting cleared art. Independent track and
+       case-study routes still **blocked** on the prerequisites below — repos
+       public, copy written.
 5. [ ] Menu Alchemist demo integration.
 6. [ ] SEO, OG image, analytics.
 

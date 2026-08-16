@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import Timeline from "@/components/Timeline";
+import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Education from "@/components/Education";
 import { profile } from "@/lib/content";
@@ -21,11 +22,13 @@ export default function Home() {
           <Timeline />
         </Section>
 
-        {/*
-          Projects section goes here — see components/Projects.tsx for the stub
-          and what it's blocked on (private repos, unwritten copy). The Northbeam
-          video and the Menu Alchemist live demo slot in around it.
-        */}
+        <Section
+          id="projects"
+          title="Production ML"
+          kicker="Shipped against real sensor data, at the level of method and outcome."
+        >
+          <Projects />
+        </Section>
 
         <Section id="skills" title="Skills">
           <Skills />
