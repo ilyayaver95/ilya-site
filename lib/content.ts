@@ -28,10 +28,27 @@ export type Education = {
 };
 
 /**
- * Shape reserved for the project cards. Nothing renders these yet — see the
- * stub in components/Projects.tsx.
+ * Production-ML cards (DRS RADA).
+ *
+ * CONFIDENTIALITY — see PROJECT_BRIEF.md. These describe methodology and
+ * outcomes only. Every claim must already appear on the public CV; no systems,
+ * customers, or performance figures beyond it. `image` must not be a screenshot
+ * of internal tooling or real data — abstract or self-made diagrams only.
+ * `image: null` renders a labelled placeholder rather than a broken image.
  */
 export type Project = {
+  slug: string;
+  name: string;
+  summary: string;
+  approach: string;
+  outcome: string;
+  skills: string[];
+  image: string | null;
+  imageAlt: string;
+};
+
+/** Independent projects use the fuller card skeleton from the brief. */
+export type IndependentProject = {
   slug: string;
   name: string;
   hook: string;
@@ -42,7 +59,7 @@ export type Project = {
 
 export type Projects = {
   productionMl: Project[];
-  independent: Project[];
+  independent: IndependentProject[];
 };
 
 export const experience: Role[] = experienceJson;
@@ -69,6 +86,7 @@ export const profile: Profile = profileJson;
 
 export const nav = [
   { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Education", href: "#education" },
 ] as const;

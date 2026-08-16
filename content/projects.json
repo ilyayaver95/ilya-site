@@ -1,4 +1,35 @@
 {
-  "productionMl": [],
+  "productionMl": [
+    {
+      "slug": "active-learning-labeling",
+      "name": "Active-Learning Labeling Pipeline",
+      "summary": "Labeling large volumes of sensor data is the bottleneck in every production ML cycle — and the labels that already exist are not necessarily right.",
+      "approach": "Built labeling workflows around Active Learning, so the pipeline ranks which samples are worth a human's attention instead of working through the queue in order. The same scoring pass is run over previously annotated data, where disagreement between model and label surfaces likely mislabels.",
+      "outcome": "Cut analysis time and manual labeling workload by ~50%, and surfaced mislabeled samples in data that had already been through annotation.",
+      "skills": ["Active Learning", "PyTorch", "MLflow", "Python", "Model Evaluation"],
+      "image": null,
+      "imageAlt": ""
+    },
+    {
+      "slug": "performance-analysis-tooling",
+      "name": "Performance Analysis & Overfit Mapping",
+      "summary": "Models that look strong in the lab do not always hold up at inference time, and an aggregate accuracy number hides where they fail.",
+      "approach": "Built analytical tooling that compares lab and production behaviour and maps where a model overfits and underfits across its input space, turning a single metric into a picture of which regions are actually trustworthy. Wired into the release path so the check runs before deployment, not after.",
+      "outcome": "Exposed lab-to-production inference gaps, drove accuracy improvements across algorithm pipelines, and caught ~3 algorithmic bugs per model release before deployment.",
+      "skills": ["Model Evaluation", "Dash", "SciPy", "Optuna", "Hydra", "Experiment Tracking"],
+      "image": null,
+      "imageAlt": ""
+    },
+    {
+      "slug": "time-series-anomaly-detection",
+      "name": "Time-Series Anomaly Detection & Enrichment",
+      "summary": "Sensor time-series arrives noisy, and the noise costs twice — once in training time, once in detection accuracy.",
+      "approach": "Developed time-series analysis, forecasting and anomaly-detection algorithms, with signal-noise and outlier reduction ahead of training. Separately automated data enrichment and labeling by integrating external APIs with tracking systems, recovering signal that the pipeline had been dropping.",
+      "outcome": "Cut both training and inference time while raising detection accuracy, and recovered thousands of previously missed tracks.",
+      "skills": ["Time-Series Analysis", "Forecasting", "Anomaly Detection", "Statistical Analysis", "NumPy", "Pandas"],
+      "image": null,
+      "imageAlt": ""
+    }
+  ],
   "independent": []
 }
