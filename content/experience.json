@@ -1,0 +1,48 @@
+[
+  {
+    "role": "ML Engineer",
+    "company": "DRS RADA Technologies",
+    "start": "2025",
+    "end": "Present",
+    "current": true,
+    "bullets": [
+      "Led development of data labeling workflows using Active Learning, cutting analysis time and manual labeling workload by ~50% while surfacing mislabeled samples in previously annotated data.",
+      "Built performance-analysis tooling that exposed lab-to-production inference gaps and mapped model overfit and underfit regions, catching ~3 algorithmic bugs per model release before deployment.",
+      "Built end-to-end ML pipelines from prototype to production with MLflow, TensorFlow, PyTorch, Dash, SciPy, Optuna and Hydra. Trained and fine-tuned transformer-based models on GPU."
+    ]
+  },
+  {
+    "role": "Data Science Analyst",
+    "company": "DRS RADA Technologies",
+    "start": "2021",
+    "end": "2025",
+    "current": false,
+    "bullets": [
+      "Developed time-series analysis, forecasting and anomaly-detection algorithms; signal noise and outlier reduction cut both training and inference time and raised detection accuracy.",
+      "Automated data enrichment and labeling by integrating external APIs with radar tracking systems, recovering thousands of previously missed tracks.",
+      "Applied statistical analysis and machine learning to improve system reliability under real-world conditions."
+    ]
+  },
+  {
+    "role": "Field Engineer",
+    "company": "DRS RADA Technologies",
+    "start": "2018",
+    "end": "2021",
+    "current": false,
+    "bullets": [
+      "Conducted field experiments and radar tests to validate system performance in real-world environments.",
+      "Ran customer training, technical support and system demonstrations through deployment."
+    ]
+  },
+  {
+    "role": "RF Engineer",
+    "company": "Intelligence Corps, Unit 8200",
+    "start": "2015",
+    "end": "2018",
+    "current": false,
+    "bullets": [
+      "Responsible for RF system design, including transmission and reception planning, and lab testing with Network Analyzers and Spectrum Analyzers.",
+      "Led product integration, equipment validation and implementation across laboratory and field environments."
+    ]
+  }
+]

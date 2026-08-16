@@ -1,0 +1,93 @@
+[
+  {
+    "group": "Programming Languages",
+    "items": ["Python", "C", "C++", "Java", "SQL"]
+  },
+  {
+    "group": "Agentic & Generative AI",
+    "items": [
+      "LLM",
+      "LLM Agents",
+      "RAG",
+      "Tool-Calling",
+      "MCP",
+      "LangChain",
+      "LangGraph",
+      "OpenAI API",
+      "Embeddings",
+      "Vector DBs",
+      "ChromaDB",
+      "FAISS",
+      "Claude Code"
+    ]
+  },
+  {
+    "group": "ML & Deep Learning",
+    "items": [
+      "PyTorch",
+      "TensorFlow",
+      "Hugging Face",
+      "scikit-learn",
+      "Transformers",
+      "Fine-Tuning",
+      "Active Learning",
+      "GPU Training"
+    ]
+  },
+  {
+    "group": "ML Engineering & MLOps",
+    "items": [
+      "Model Deployment",
+      "Model Evaluation",
+      "Experiment Tracking",
+      "Hyperparameter Optimization",
+      "MLflow",
+      "Optuna",
+      "Hydra",
+      "Docker",
+      "CI/CD",
+      "Git",
+      "Azure"
+    ]
+  },
+  {
+    "group": "Data & Analysis",
+    "items": [
+      "NumPy",
+      "Pandas",
+      "SciPy",
+      "Spark",
+      "Dash",
+      "Time-Series Analysis",
+      "Forecasting",
+      "Anomaly Detection",
+      "Statistical Analysis"
+    ]
+  },
+  {
+    "group": "Backend & Data Stores",
+    "items": [
+      "FastAPI",
+      "Django",
+      "REST API",
+      "Async Python",
+      "asyncio",
+      "MongoDB",
+      "Redis"
+    ]
+  },
+  {
+    "group": "Signal Processing & RF",
+    "items": [
+      "Signal Processing",
+      "Radar Technology",
+      "RF Systems",
+      "Real-Time Systems",
+      "Algorithm Development"
+    ]
+  },
+  {
+    "group": "Languages",
+    "items": ["Hebrew — Native", "English — Fluent", "Russian — Native"]
+  }
+]
