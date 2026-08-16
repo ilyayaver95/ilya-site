@@ -1,4 +1,4 @@
-cv:# Personal Site — Project Brief
+# Personal Site — Project Brief
 
 Handoff document for building `ilyayaverbaum.com`. Contains every decision made
 during planning. Drop this in the repo root and reference it from `CLAUDE.md`.
@@ -7,9 +7,16 @@ during planning. Drop this in the repo root and reference it from `CLAUDE.md`.
 
 ## Purpose
 
-A landing page whose single job is **landing full-time AI/ML roles**. Not
-freelance, not services, not a personal blog. Every section is optimized for a
-hiring manager who gives the page 40 seconds.
+A professional portfolio whose single job is **establishing technical
+credibility**. Not freelance, not services, not a personal blog. Every section
+is optimized for a technical reader — an engineer, a hiring manager, a
+conference organizer — who gives the page 40 seconds.
+
+**Not a job hunt.** Ilya is not actively searching for roles, and the site
+carries no availability signalling: no "open to work" badge, no "currently
+open to…" line, no availability copy anywhere. The site earns its keep by
+showing the work, not by asking for anything. If that changes, the availability
+signal goes back in the hero and this section gets rewritten first.
 
 Owner: Ilya Yaverbaum — AI/ML Engineer, Tel Aviv.
 GitHub: github.com/ilyayaver95 · LinkedIn: linkedin.com/in/ilya-yaverbaum ·
@@ -64,9 +71,10 @@ entirely. That fact should be the **first line** of its card, not a footnote.
 
 Single page with anchors, plus one detail route per project.
 
-1. **Hero** — name, "AI/ML Engineer", positioning lines, GitHub/LinkedIn/email,
-   download-CV button, and an explicit availability signal:
-   *"Currently open to AI/ML roles — Tel Aviv / hybrid / remote."*
+1. **Hero** — centered: photo, name, "AI/ML Engineer · Tel Aviv", positioning
+   lines, the "is the right answer enumerable?" pull quote, then
+   GitHub/LinkedIn/email and the download-CV button. No availability signal —
+   see Purpose.
 2. **Flagship demo** — Northbeam video, high on the page. This is proof of work
    and is treated as hero-adjacent, not buried at projects position 3.
 3. **Experience** — timeline of the four roles. The arc (Unit 8200 RF → field
@@ -151,7 +159,7 @@ playful.
 **Menu Alchemist** — decide between:
 - Render free tier (blueprint already exists) — ~1 min cold start after 15 min
   idle. If chosen, the page MUST show a canned example immediately while the
-  backend wakes. A recruiter will not wait a minute.
+  backend wakes. A visitor will not wait a minute.
 - Re-host as a Vercel serverless route alongside the site — no cold start,
   one deployment.
 
@@ -183,22 +191,31 @@ static one gets skipped. Do not serve large MP4s from raw.githubusercontent.com
 ```
 /app          → page routes (single page + /projects/[slug])
 /content
-  experience.json
-  projects.json
+  experience.json      (includes per-role `stack` tags)
+  education.json
   skills.json
-/components   → Hero, Timeline, ProjectCard, DemoWidget, Skills
+  projects.json        (empty until the repos are public)
+/lib
+  content.ts    → typed re-export of all JSON + `profile` and `nav` constants
+/components   → Nav, Hero, Section, Timeline, Skills, Education,
+                Projects (stub), ProjectCard, DemoWidget
 /public       → cv.pdf, og-image.png, project screenshots, northbeam-loop.mp4
 ```
+
+Static export is on (`output: "export"` → `/out`), so nothing server-only:
+no route handlers, no dynamic functions, no image optimizer. The Menu Alchemist
+demo therefore cannot be a Next.js API route without turning the export off —
+factor that into the demo-hosting decision below.
 
 ---
 
 ## Features
 
-**In v1:** hero with availability signal · experience timeline · project cards
-(two tracks) · Northbeam video · Menu Alchemist live demo · skills · downloadable
-CV PDF · full SEO + OG metadata (geo tags, keywords, og-image — this is what
-surfaces the site for "AI engineer Israel") · mobile-first · dark mode ·
-analytics (Plausible or Vercel).
+**In v1:** sticky anchor nav · centered hero · experience cards with per-role
+tech tags · project cards (two tracks) · Northbeam video · Menu Alchemist live
+demo · skills · education · downloadable CV PDF · full SEO + OG metadata (geo
+tags, keywords, og-image — this is what surfaces the site for "AI engineer
+Israel") · mobile-first · dark mode · analytics (Plausible or Vercel).
 
 **Deferred:** "chat with my CV" RAG widget (on-brand — it is the skill it
 demonstrates; small ChromaDB/FAISS index over CV + project write-ups).
@@ -215,12 +232,24 @@ active-learning concept. Nobody else in this space has one and it is uniquely hi
 
 ## Build order
 
-1. Scaffold + deploy an empty site to Vercel first — never debug deployment and
-   design simultaneously.
-2. Hero + experience + skills.
-3. Project cards + case-study routes.
-4. Menu Alchemist demo integration.
-5. SEO, OG image, analytics.
+1. [x] Scaffold — Next.js 16 App Router + Tailwind v4, static export. Pushed to
+       `github.com/ilyayaver95/ilya-site` (**private**; contains this brief).
+2. [~] Deploy to Vercel — import pending, then point `ilyayaverbaum.com` DNS at
+       it from GoDaddy. Read the records off Vercel; never guess the values.
+3. [x] Hero + experience + skills + education, restyled to the reference palette.
+4. [ ] Project cards + case-study routes. **Blocked** on the prerequisites
+       below — repos public, copy written.
+5. [ ] Menu Alchemist demo integration.
+6. [ ] SEO, OG image, analytics.
+
+Deviation from the original order: the site was styled before deploying rather
+than after. The "deploy an empty site first" rule still holds for the *Vercel
+import* — do that before adding anything server-shaped.
+
+### Working rules
+
+- Push only to feature branches. `main` auto-deploys; never push it unasked.
+- Ask before installing anything beyond Next.js, Tailwind, and their deps.
 
 ---
 
@@ -231,11 +260,12 @@ active-learning concept. Nobody else in this space has one and it is uniquely hi
       `git log -p | grep -inE "api[_-]?key|secret|token|password|sk-ant|sk-|AIza"`
       Rotate anything found — deleting the file does not unexpose the commit.
       Confirm `.env`, `*.db`, `data/local.db` are gitignored.
-- [ ] Flip all three repos public. Non-negotiable: for AI/ML roles the code gets
-      read, and a "View code" button that 404s reads as a broken site.
-- [ ] Add a screenshot or GIF to each README — recruiters skim READMEs and rarely
+- [ ] Flip all three repos public. Non-negotiable: the whole point is that the
+      code gets read, and a "View code" button that 404s reads as a broken site.
+      This gates the entire projects section.
+- [ ] Add a screenshot or GIF to each README — readers skim READMEs and rarely
       open a `.py` file.
-- [ ] Buy the domain.
+- [x] Buy the domain — `ilyayaverbaum.com`, registered at GoDaddy.
 - [ ] Compress + upload the Northbeam video.
 - [ ] Photo for the hero (pending).
 
@@ -243,7 +273,33 @@ active-learning concept. Nobody else in this space has one and it is uniquely hi
 
 ## Reference
 
-Structure inspiration: https://rampakanayev.com/ — take the information
-architecture and the SEO thoroughness, not the positioning. That site sells
-production agentic AI at named companies; this one sells engineering rigor plus
-production sensor ML. Copying its framing would invite an unfavorable comparison.
+Structure **and visual** inspiration: https://rampakanayev.com/ — take the
+information architecture, the design language, and the SEO thoroughness, but
+**not the positioning**. That site sells production agentic AI at named
+companies; this one sells engineering rigor plus production sensor ML. Copying
+its framing would invite an unfavorable comparison, so all copy stays original.
+
+What was adopted from it: the token palette (below), gradient headings, gradient
+card surfaces, glow shadows, the sticky blurred anchor nav, the centered
+photo-above-name hero, experience-as-cards with tech tags, and the skills card
+grid.
+
+### Design tokens
+
+Lifted from the reference site's stylesheet, kept as bare HSL triplets so they
+compose with alpha. Defined in `app/globals.css`; light mode carries the same
+token names. **Never hardcode a hex — always go through a token.**
+
+| Token          | Dark value    | Role                     |
+| -------------- | ------------- | ------------------------ |
+| `--background` | `220 26% 6%`  | cool near-black ground   |
+| `--card`       | `220 26% 8%`  | card base (→ `10%` grad) |
+| `--foreground` | `210 40% 98%` | primary text             |
+| `--muted-foreground` | `215 20% 65%` | secondary text     |
+| `--border`     | `220 26% 15%` | hairlines                |
+| `--primary`    | `264 83% 70%` | violet                   |
+| `--accent`     | `197 71% 52%` | cyan                     |
+| `--radius`     | `0.75rem`     | card corner              |
+
+Helper classes: `.hero-wash` (violet/cyan radial wash), `.card-surface`
+(gradient + shadow), `.text-gradient` (violet→cyan clip), `.glow`.

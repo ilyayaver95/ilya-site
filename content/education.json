@@ -1,0 +1,16 @@
+[
+  {
+    "degree": "B.Sc. Computer Science",
+    "institution": "Holon Institute of Technology (HIT)",
+    "start": "2020",
+    "end": "2023",
+    "note": "Computer science principles, algorithms, data structures and software development."
+  },
+  {
+    "degree": "Associate Degree, Electronics and Computers",
+    "institution": "Ort Hermelin College",
+    "start": "2013",
+    "end": "2015",
+    "note": "Technological Track of the Intelligence Corps — electronics and computer systems."
+  }
+]

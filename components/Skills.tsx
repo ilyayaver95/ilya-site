@@ -2,20 +2,20 @@ import { skills } from "@/lib/content";
 
 export default function Skills() {
   return (
-    <div className="space-y-7">
+    <div className="grid gap-4 sm:grid-cols-2">
       {skills.map((group) => (
         <div
           key={group.group}
-          className="grid gap-3 sm:grid-cols-[11rem_1fr] sm:gap-6"
+          className="rounded-card border border-border card-surface p-5 transition-colors hover:border-accent/40"
         >
-          <h3 className="font-mono text-xs text-muted sm:pt-1.5">
+          <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-accent">
             {group.group}
           </h3>
-          <ul className="flex flex-wrap gap-2">
+          <ul className="mt-4 flex flex-wrap gap-2">
             {group.items.map((item) => (
               <li
                 key={item}
-                className="rounded-md border border-border bg-surface px-2.5 py-1 text-xs text-foreground"
+                className="rounded-md border border-border bg-background/40 px-2.5 py-1 text-xs text-muted"
               >
                 {item}
               </li>
