@@ -1,3 +1,4 @@
+import profileJson from "@/content/profile.json";
 import experienceJson from "@/content/experience.json";
 import skillsJson from "@/content/skills.json";
 import educationJson from "@/content/education.json";
@@ -49,15 +50,22 @@ export const skills: SkillGroup[] = skillsJson;
 export const education: Education[] = educationJson;
 export const projects: Projects = projectsJson;
 
-export const profile = {
-  name: "Ilya Yaverbaum",
-  title: "AI/ML Engineer",
-  location: "Tel Aviv, Israel",
-  email: "ilya.yaver@gmail.com",
-  github: "https://github.com/ilyayaver95",
-  linkedin: "https://www.linkedin.com/in/ilya-yaverbaum",
-  cv: "/cv.pdf",
-} as const;
+export type Profile = {
+  name: string;
+  title: string;
+  location: string;
+  email: string;
+  github: string;
+  linkedin: string;
+  cv: string;
+  /** The positioning spine — see PROJECT_BRIEF.md. Change with care. */
+  positioning: string;
+  /** Career arc. Every claim here must be checkable against the CV. */
+  background: string;
+  quote: string;
+};
+
+export const profile: Profile = profileJson;
 
 export const nav = [
   { label: "Experience", href: "#experience" },

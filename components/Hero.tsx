@@ -27,16 +27,16 @@ export default function Hero() {
           <span className="text-muted"> · {profile.location}</span>
         </p>
 
-        <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-          ML engineer who builds LLM systems the way production ML gets built —
-          deterministic where the answer is knowable, evaluated where it
-          isn&rsquo;t, and instrumented either way. Eight years shipping ML
-          against real radar data.
+        <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-foreground sm:text-lg">
+          {profile.positioning}
+        </p>
+
+        <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
+          {profile.background}
         </p>
 
         <blockquote className="mx-auto mt-8 max-w-xl rounded-card border border-border card-surface px-5 py-4 text-sm italic leading-relaxed text-muted sm:text-base">
-          &ldquo;For every decision in an agent, ask: is the right answer
-          enumerable?&rdquo;
+          &ldquo;{profile.quote}&rdquo;
         </blockquote>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">

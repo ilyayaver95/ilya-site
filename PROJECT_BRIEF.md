@@ -42,8 +42,15 @@ all three side projects:
 - **Menu Alchemist** — LLM extracts the recipe; pantry detection, package sizing
   and serving math are pure Python and unit-tested.
 
-Backed by 8 years shipping ML against real radar data at DRS RADA. The combination
-— production sensor ML plus disciplined LLM engineering — is the differentiator.
+Backed by production sensor ML at DRS RADA. The combination — production sensor
+ML plus disciplined LLM engineering — is the differentiator.
+
+**Do not claim "8 years shipping ML."** An earlier draft of this brief did, and
+it does not survive the CV: 8 years is DRS RADA *tenure* (2018→), which began in
+field engineering. ML/data-science work starts at the Data Science Analyst role
+in 2021. The defensible framing is the arc, not a single number — radar and RF
+since 2015, ML since 2021. Prefer "since 2015" over a year count so the copy
+does not silently rot. Every number on the page must be checkable against the CV.
 
 Northbeam's own line is the best single sentence available and should appear on
 the page close to verbatim: *"For every decision in an agent, ask: is the right
