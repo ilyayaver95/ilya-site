@@ -6,10 +6,10 @@ export default function Education() {
       {education.map((item) => (
         <article
           key={item.degree}
-          className="rounded-card border border-border card-surface p-5 transition-colors hover:border-primary/40"
+          className="group card-surface card-interactive rounded-card border border-border p-5"
         >
           <div className="flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-            <h3 className="text-base font-semibold sm:text-lg">
+            <h3 className="text-base font-semibold transition-colors duration-300 group-hover:text-primary sm:text-lg">
               {item.degree}
               <span className="font-normal text-muted"> · {item.institution}</span>
             </h3>

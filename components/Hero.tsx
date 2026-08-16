@@ -18,7 +18,7 @@ export default function Hero() {
           photo
         </div>
 
-        <h1 className="mt-8 text-4xl font-bold tracking-tight sm:text-6xl">
+        <h1 className="animate-gradient mt-8 pb-1 text-4xl font-bold tracking-tight sm:text-6xl">
           {profile.name}
         </h1>
 
@@ -46,7 +46,7 @@ export default function Hero() {
               href={link.href}
               target={link.href.startsWith("mailto:") ? undefined : "_blank"}
               rel="noreferrer"
-              className="rounded-card border border-border card-surface px-4 py-2 text-sm text-foreground transition-colors hover:border-primary hover:text-primary"
+              className="card-surface card-interactive rounded-card border border-border px-4 py-2 text-sm text-foreground hover:text-primary"
             >
               {link.label}
             </a>
@@ -54,7 +54,7 @@ export default function Hero() {
           <a
             href={profile.cv}
             download
-            className="glow rounded-card bg-primary px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            className="card-interactive glow rounded-card bg-primary px-4 py-2 text-sm font-medium text-background"
           >
             Download CV
           </a>

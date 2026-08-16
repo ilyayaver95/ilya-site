@@ -6,7 +6,7 @@ export default function Skills() {
       {skills.map((group) => (
         <div
           key={group.group}
-          className="rounded-card border border-border card-surface p-5 transition-colors hover:border-accent/40"
+          className="group card-surface card-interactive rounded-card border border-border p-5"
         >
           <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-accent">
             {group.group}
@@ -15,7 +15,7 @@ export default function Skills() {
             {group.items.map((item) => (
               <li
                 key={item}
-                className="rounded-md border border-border bg-background/40 px-2.5 py-1 text-xs text-muted"
+                className="rounded-md border border-border bg-background/40 px-2.5 py-1 text-xs text-muted transition-colors duration-300 group-hover:border-accent/25 group-hover:text-foreground"
               >
                 {item}
               </li>
