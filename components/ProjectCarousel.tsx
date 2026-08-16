@@ -4,30 +4,40 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { Project } from "@/lib/content";
 
+const ADVANCE_MS = 6000;
+const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
+
 /**
- * Horizontal carousel built on native CSS scroll-snap: swipe works on touch
- * with no JS, and the buttons/dots are progressive enhancement on top. Chosen
- * over a carousel library so nothing new gets installed — see PROJECT_BRIEF.md.
+ * Auto-advancing carousel over native CSS scroll-snap: swipe works on touch
+ * with no JS, and the buttons, dots and autoplay are progressive enhancement.
+ * Built on scroll-snap rather than a carousel library so nothing new is
+ * installed — see PROJECT_BRIEF.md.
+ *
+ * Autoplay pauses on hover, on keyboard focus, and while the user is dragging,
+ * and never starts under prefers-reduced-motion. WCAG 2.2.2 also wants an
+ * explicit control for moving content, so there is a real pause/play button.
  */
 export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   const trackRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [playing, setPlaying] = useState(true);
 
   const scrollTo = useCallback((index: number) => {
     const track = trackRef.current;
     if (!track) return;
     const slide = track.children[index] as HTMLElement | undefined;
-    slide?.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
-      block: "nearest",
-      inline: "start",
+    if (!slide) return;
+    // scrollIntoView would also scroll the page vertically; setting scrollLeft
+    // keeps the movement inside the track.
+    track.scrollTo({
+      left: slide.offsetLeft - track.offsetLeft,
+      behavior: window.matchMedia(REDUCED_MOTION).matches ? "auto" : "smooth",
     });
   }, []);
 
-  // Derive the active dot from scroll position rather than tracking it in
-  // state on click — keeps swipe, buttons and keyboard in sync for free.
+  // Derive the active slide from scroll position rather than tracking it on
+  // click — keeps swipe, buttons, keyboard and autoplay in sync for free.
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -36,9 +46,8 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
     const onScroll = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        const { scrollLeft, scrollWidth } = track;
-        const perSlide = scrollWidth / track.children.length;
-        setActive(Math.round(scrollLeft / perSlide));
+        const perSlide = track.scrollWidth / track.children.length;
+        setActive(Math.round(track.scrollLeft / perSlide));
       });
     };
 
@@ -49,71 +58,110 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
     };
   }, []);
 
-  const go = (delta: number) =>
-    scrollTo(Math.min(Math.max(active + delta, 0), projects.length - 1));
+  useEffect(() => {
+    if (!playing || paused) return;
+    if (window.matchMedia(REDUCED_MOTION).matches) return;
+
+    const timer = setInterval(() => {
+      setActive((current) => {
+        const next = (current + 1) % projects.length;
+        scrollTo(next);
+        return next;
+      });
+    }, ADVANCE_MS);
+
+    return () => clearInterval(timer);
+  }, [playing, paused, projects.length, scrollTo]);
+
+  const go = (delta: number) => {
+    const next = (active + delta + projects.length) % projects.length;
+    scrollTo(next);
+  };
 
   return (
-    <div className="relative">
+    <div
+      className="relative"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={() => setPaused(false)}
+      onTouchStart={() => setPaused(true)}
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Production ML projects"
+    >
       <ul
         ref={trackRef}
         className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {projects.map((project) => (
+        {projects.map((project, i) => (
           <li
             key={project.slug}
             className="group card-surface card-interactive w-full shrink-0 snap-start overflow-hidden rounded-card border border-border"
+            aria-roledescription="slide"
+            aria-label={`${i + 1} of ${projects.length}`}
           >
-            <div className="relative aspect-video w-full border-b border-border bg-background/40">
-              {project.image ? (
+            {project.image ? (
+              <div className="relative aspect-video w-full border-b border-border bg-white">
                 <Image
                   src={project.image}
                   alt={project.imageAlt}
                   fill
                   sizes="(max-width: 768px) 100vw, 768px"
-                  className="object-cover"
+                  className="object-contain"
+                  priority={i === 0}
                 />
-              ) : (
-                <div className="flex h-full w-full flex-col items-center justify-center gap-1 text-center">
-                  <span className="font-mono text-xs text-muted">
-                    image slot — 16:9
-                  </span>
-                  <span className="px-6 font-mono text-[11px] text-muted/70">
-                    no internal screenshots · abstract or self-made only
-                  </span>
-                </div>
-              )}
-            </div>
+              </div>
+            ) : (
+              <div className="flex aspect-video w-full items-center justify-center border-b border-border bg-background/40">
+                <span className="font-mono text-xs text-muted">
+                  image slot — 16:9
+                </span>
+              </div>
+            )}
 
             <div className="p-5 sm:p-6">
-              <h3 className="text-lg font-semibold transition-colors duration-300 group-hover:text-primary">
+              <h3 className="text-lg font-semibold transition-colors duration-300 group-hover:text-primary sm:text-xl">
                 {project.name}
               </h3>
 
-              <p className="mt-3 text-sm leading-relaxed text-muted">
-                {project.summary}
+              <p className="mt-1 font-mono text-xs text-accent">
+                {project.role}
               </p>
 
               <p className="mt-4 text-sm leading-relaxed text-muted">
-                <span className="font-mono text-xs uppercase tracking-wider text-accent">
-                  Approach ·{" "}
-                </span>
-                {project.approach}
+                {project.description}
               </p>
 
-              <p className="mt-4 text-sm leading-relaxed text-muted">
-                <span className="font-mono text-xs uppercase tracking-wider text-accent">
-                  Outcome ·{" "}
-                </span>
-                {project.outcome}
-              </p>
+              <ul className="mt-5 space-y-2">
+                {project.highlights.map((highlight) => (
+                  <li
+                    key={highlight}
+                    className="relative pl-4 text-sm text-foreground before:absolute before:left-0 before:top-[0.55em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-primary/60"
+                  >
+                    {highlight}
+                  </li>
+                ))}
+              </ul>
+
+              {project.cta ? (
+                <a
+                  href={project.cta.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-block rounded-md border border-border px-3 py-1.5 text-sm text-foreground transition-colors hover:border-primary hover:text-primary"
+                >
+                  {project.cta.label} →
+                </a>
+              ) : null}
 
               <ul className="mt-5 flex flex-wrap gap-2">
-                {project.skills.map((skill) => (
+                {project.tags.map((tag) => (
                   <li
-                    key={skill}
+                    key={tag}
                     className="rounded-md border border-border bg-background/40 px-2.5 py-1 font-mono text-[11px] text-muted transition-colors duration-300 group-hover:border-primary/25 group-hover:text-foreground"
                   >
-                    {skill}
+                    {tag}
                   </li>
                 ))}
               </ul>
@@ -123,7 +171,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
       </ul>
 
       <div className="mt-2 flex items-center justify-between gap-4">
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
           {projects.map((project, i) => (
             <button
               key={project.slug}
@@ -138,24 +186,31 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
               }`}
             />
           ))}
+
+          <button
+            type="button"
+            onClick={() => setPlaying((p) => !p)}
+            aria-label={playing ? "Pause automatic rotation" : "Resume automatic rotation"}
+            className="ml-2 rounded-md border border-border px-2 py-1 font-mono text-[11px] text-muted transition-colors hover:border-primary hover:text-primary"
+          >
+            {playing ? "❚❚" : "▶"}
+          </button>
         </div>
 
         <div className="flex gap-2">
           <button
             type="button"
             onClick={() => go(-1)}
-            disabled={active === 0}
             aria-label="Previous project"
-            className="rounded-md border border-border px-3 py-1.5 text-sm text-muted transition-colors hover:border-primary hover:text-primary disabled:pointer-events-none disabled:opacity-30"
+            className="rounded-md border border-border px-3 py-1.5 text-sm text-muted transition-colors hover:border-primary hover:text-primary"
           >
             ←
           </button>
           <button
             type="button"
             onClick={() => go(1)}
-            disabled={active === projects.length - 1}
             aria-label="Next project"
-            className="rounded-md border border-border px-3 py-1.5 text-sm text-muted transition-colors hover:border-primary hover:text-primary disabled:pointer-events-none disabled:opacity-30"
+            className="rounded-md border border-border px-3 py-1.5 text-sm text-muted transition-colors hover:border-primary hover:text-primary"
           >
             →
           </button>
