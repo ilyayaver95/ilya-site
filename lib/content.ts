@@ -28,18 +28,22 @@ export type Education = {
 };
 
 /**
- * Production-ML cards (DRS RADA).
+ * A project card. Both tracks share one skeleton — problem, approach, the one
+ * interesting decision, stack chips, link — per PROJECT_BRIEF.md, so a card
+ * renders the same wherever it appears and adding a project stays a one-file
+ * JSON edit.
  *
- * CONFIDENTIALITY — see PROJECT_BRIEF.md. These describe methodology and
- * outcomes only. Every claim must already appear on the public CV; no systems,
- * customers, or performance figures beyond it. `image` must not be a screenshot
- * of internal tooling or real data — abstract or self-made diagrams only.
- * `image: null` renders a labelled placeholder rather than a broken image.
+ * CONFIDENTIALITY — see PROJECT_BRIEF.md. The production-ML cards (DRS RADA)
+ * describe methodology and outcomes only. Every claim must already appear on
+ * the public CV; no systems, customers, or performance figures beyond it.
+ * `image` must not be a screenshot of internal tooling or real data — abstract
+ * or self-made diagrams only. That constraint does not apply to the independent
+ * track, where the work is public and real footage is the point.
  */
 export type Project = {
   slug: string;
   name: string;
-  /** "Role @ Company" — anchors the work to a real position. */
+  /** "Role @ Company" for production work; "Independent project" for the rest. */
   role: string;
   description: string;
   /** Three short proof points; the last carries status and scale. */
@@ -47,23 +51,22 @@ export type Project = {
   tags: string[];
   /** Optional "Explore …" link. Production DRS work has none — nothing public to link. */
   cta?: { label: string; href: string };
+  /** `image: null` renders a labelled placeholder rather than a broken image. */
   image: string | null;
   imageAlt: string;
-};
-
-/** Independent projects use the fuller card skeleton from the brief. */
-export type IndependentProject = {
-  slug: string;
-  name: string;
-  hook: string;
-  stack: string[];
-  repo?: string;
-  demo?: string;
+  /**
+   * Muted autoplay loop for the media slot; takes precedence over `image`.
+   * Keep these short and small (brief: 10–15s, under 2 MB) — a moving thumbnail
+   * gets watched, but not at the cost of the page weight.
+   */
+  video?: string;
+  /** Poster frame, shown before the loop plays and wherever autoplay is refused. */
+  videoPoster?: string;
 };
 
 export type Projects = {
   productionMl: Project[];
-  independent: IndependentProject[];
+  independent: Project[];
 };
 
 export const experience: Role[] = experienceJson;
