@@ -6,10 +6,10 @@ export default function Timeline() {
       {experience.map((role) => (
         <article
           key={`${role.role}-${role.start}`}
-          className="rounded-card border border-border card-surface p-5 transition-colors hover:border-primary/40 sm:p-6"
+          className="group card-surface card-interactive rounded-card border border-border p-5 sm:p-6"
         >
           <div className="flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-            <h3 className="text-lg font-semibold">
+            <h3 className="text-lg font-semibold transition-colors duration-300 group-hover:text-primary">
               {role.role}
               <span className="font-normal text-muted"> · {role.company}</span>
             </h3>
@@ -33,7 +33,7 @@ export default function Timeline() {
             {role.stack.map((tech) => (
               <li
                 key={tech}
-                className="rounded-md border border-border bg-background/40 px-2.5 py-1 font-mono text-[11px] text-muted"
+                className="rounded-md border border-border bg-background/40 px-2.5 py-1 font-mono text-[11px] text-muted transition-colors duration-300 group-hover:border-primary/25 group-hover:text-foreground"
               >
                 {tech}
               </li>

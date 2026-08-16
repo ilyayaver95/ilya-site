@@ -93,6 +93,54 @@ body {
   box-shadow: var(--shadow-glow);
 }
 
+/*
+ * Animated gradient text. A 4-stop violet->cyan->violet->cyan ramp at double
+ * width, clipped to the glyphs, sliding its background-position. Reserved for
+ * the hero name — one instance per page, or it stops reading as special.
+ */
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--primary)),
+    hsl(var(--accent)),
+    hsl(var(--primary)),
+    hsl(var(--accent))
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 4s ease-in-out infinite;
+}
+
+/*
+ * Card hover: lift, glow, warm the border. Scale is deliberately smaller than
+ * the reference's 1.05 — our cards run full-bleed at 3xl, where 5% reads as a
+ * lurch rather than a lift.
+ */
+.card-interactive {
+  transition:
+    transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-interactive:hover {
+  transform: scale(1.015);
+  box-shadow: var(--shadow-glow);
+  border-color: hsl(var(--primary) / 0.4);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -106,5 +154,17 @@ html {
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  /* Keep the gradient, drop the loop — the colour is the point, not the slide. */
+  .animate-gradient {
+    animation: none;
+    background-position: 0% 50%;
+  }
+
+  /* Glow and border still respond to hover; the scale jump does not. */
+  .card-interactive:hover {
+    transform: none;
   }
 }
