@@ -2,38 +2,45 @@ import { experience } from "@/lib/content";
 
 export default function Timeline() {
   return (
-    <ol className="relative border-l border-border pl-6 sm:pl-8">
+    <div className="space-y-5">
       {experience.map((role) => (
-        <li key={`${role.role}-${role.start}`} className="pb-10 last:pb-0">
-          <span
-            aria-hidden="true"
-            className={`absolute -left-[5px] mt-1.5 h-2.5 w-2.5 rounded-full border-2 border-background ${
-              role.current ? "bg-accent" : "bg-border"
-            }`}
-          />
-
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-            <h3 className="text-base font-medium sm:text-lg">
+        <article
+          key={`${role.role}-${role.start}`}
+          className="rounded-card border border-border card-surface p-5 transition-colors hover:border-primary/40 sm:p-6"
+        >
+          <div className="flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+            <h3 className="text-lg font-semibold">
               {role.role}
-              <span className="text-muted"> · {role.company}</span>
+              <span className="font-normal text-muted"> · {role.company}</span>
             </h3>
-            <p className="shrink-0 font-mono text-xs text-muted">
+            <p className="shrink-0 font-mono text-xs text-accent">
               {role.start} — {role.end}
             </p>
           </div>
 
-          <ul className="mt-3 space-y-2">
+          <ul className="mt-4 space-y-2.5">
             {role.bullets.map((bullet) => (
               <li
                 key={bullet}
-                className="relative pl-4 text-sm leading-relaxed text-muted before:absolute before:left-0 before:top-[0.6em] before:h-1 before:w-1 before:rounded-full before:bg-border"
+                className="relative pl-4 text-sm leading-relaxed text-muted before:absolute before:left-0 before:top-[0.55em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-primary/60"
               >
                 {bullet}
               </li>
             ))}
           </ul>
-        </li>
+
+          <ul className="mt-5 flex flex-wrap gap-2">
+            {role.stack.map((tech) => (
+              <li
+                key={tech}
+                className="rounded-md border border-border bg-background/40 px-2.5 py-1 font-mono text-[11px] text-muted"
+              >
+                {tech}
+              </li>
+            ))}
+          </ul>
+        </article>
       ))}
-    </ol>
+    </div>
   );
 }

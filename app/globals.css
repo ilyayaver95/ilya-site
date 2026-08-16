@@ -1,44 +1,96 @@
 @import "tailwindcss";
 
-/* Light palette is the base; dark overrides below. */
+/*
+ * Palette follows the reference site's token system (see PROJECT_BRIEF.md):
+ * cool near-black ground, violet primary, cyan accent, violet->cyan gradients.
+ * Values are bare HSL triplets so they can be composed with alpha.
+ */
 :root {
-  --background: #ffffff;
-  --surface: #f6f7f9;
-  --foreground: #14171a;
-  --muted: #5b6470;
-  --border: #e2e5ea;
-  --accent: #0f6f8c;
-  --accent-soft: #e6f2f6;
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-elevated: 210 40% 98%;
+  --primary: 264 83% 70%;
+  --accent: 197 71% 52%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --border: 214.3 31.8% 91.4%;
+  --radius: 0.75rem;
+  --shadow-card: 0 8px 32px hsl(214.3 31.8% 91.4% / 0.5);
+  --shadow-glow: 0 0 30px hsl(var(--primary) / 0.2);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0c0f;
-    --surface: #12161b;
-    --foreground: #e8ebee;
-    --muted: #8b95a1;
-    --border: #222a33;
-    --accent: #4cc4e6;
-    --accent-soft: #0f2730;
+    --background: 220 26% 6%;
+    --foreground: 210 40% 98%;
+    --card: 220 26% 8%;
+    --card-elevated: 220 26% 10%;
+    --primary: 264 83% 70%;
+    --accent: 197 71% 52%;
+    --muted-foreground: 215 20% 65%;
+    --border: 220 26% 15%;
+    --shadow-card: 0 8px 32px hsl(220 26% 4% / 0.5);
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.3);
   }
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-surface: var(--surface);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-elevated: hsl(var(--card-elevated));
+  --color-primary: hsl(var(--primary));
+  --color-accent: hsl(var(--accent));
+  --color-muted: hsl(var(--muted-foreground));
+  --color-border: hsl(var(--border));
+  --radius-card: var(--radius);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Section ground: a soft violet->cyan wash, strongest at the top of the page. */
+.hero-wash {
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      hsl(var(--primary) / 0.18),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 85% 10%,
+      hsl(var(--accent) / 0.12),
+      transparent 70%
+    );
+}
+
+.card-surface {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--card)),
+    hsl(var(--card-elevated))
+  );
+  box-shadow: var(--shadow-card);
+}
+
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary)),
+    hsl(var(--accent))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glow {
+  box-shadow: var(--shadow-glow);
 }
 
 html {
@@ -48,5 +100,11 @@ html {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }

@@ -8,64 +8,56 @@ const links = [
 
 export default function Hero() {
   return (
-    <section className="border-b border-border px-5 py-16 sm:px-8 sm:py-24">
-      <div className="mx-auto max-w-3xl">
-        <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-10">
-          {/* TODO: replace with a real photo (public/ilya.jpg) once available. */}
-          <div
-            aria-hidden="true"
-            className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full border border-dashed border-border bg-surface font-mono text-xs text-muted sm:h-28 sm:w-28"
+    <section id="top" className="hero-wash px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-24">
+      <div className="mx-auto max-w-3xl text-center">
+        {/* TODO: replace with a real photo (public/ilya.jpg) once available. */}
+        <div
+          aria-hidden="true"
+          className="glow mx-auto flex h-28 w-28 items-center justify-center rounded-full border border-border card-surface font-mono text-xs text-muted sm:h-32 sm:w-32"
+        >
+          photo
+        </div>
+
+        <h1 className="mt-8 text-4xl font-bold tracking-tight sm:text-6xl">
+          {profile.name}
+        </h1>
+
+        <p className="mt-3 font-mono text-sm sm:text-base">
+          <span className="text-gradient font-medium">{profile.title}</span>
+          <span className="text-muted"> · {profile.location}</span>
+        </p>
+
+        <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+          ML engineer who builds LLM systems the way production ML gets built —
+          deterministic where the answer is knowable, evaluated where it
+          isn&rsquo;t, and instrumented either way. Eight years shipping ML
+          against real radar data.
+        </p>
+
+        <blockquote className="mx-auto mt-8 max-w-xl rounded-card border border-border card-surface px-5 py-4 text-sm italic leading-relaxed text-muted sm:text-base">
+          &ldquo;For every decision in an agent, ask: is the right answer
+          enumerable?&rdquo;
+        </blockquote>
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          {links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+              rel="noreferrer"
+              className="rounded-card border border-border card-surface px-4 py-2 text-sm text-foreground transition-colors hover:border-primary hover:text-primary"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href={profile.cv}
+            download
+            className="glow rounded-card bg-primary px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
           >
-            photo
-          </div>
-
-          <div className="min-w-0">
-            <p className="inline-flex items-center gap-2 rounded-full bg-accent-soft px-3 py-1 font-mono text-xs text-accent">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              Open to work
-            </p>
-
-            <h1 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
-              {profile.name}
-            </h1>
-            <p className="mt-1 font-mono text-sm text-accent">
-              {profile.title} · {profile.location}
-            </p>
-
-            <p className="mt-6 text-base leading-relaxed text-foreground sm:text-lg">
-              ML engineer who builds LLM systems the way production ML gets
-              built — deterministic where the answer is knowable, evaluated
-              where it isn&rsquo;t, and instrumented either way.
-            </p>
-
-            <blockquote className="mt-5 border-l-2 border-accent pl-4 text-sm leading-relaxed text-muted sm:text-base">
-              &ldquo;For every decision in an agent, ask: is the right answer
-              enumerable?&rdquo;
-            </blockquote>
-
-            <p className="mt-6 text-sm text-muted">{profile.availability}</p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <a
-                href={profile.cv}
-                download
-                className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
-              >
-                Download CV
-              </a>
-              {links.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.href.startsWith("mailto:") ? undefined : "_blank"}
-                  rel="noreferrer"
-                  className="rounded-md border border-border px-4 py-2 text-sm text-foreground transition-colors hover:border-accent hover:text-accent"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
+            Download CV
+          </a>
         </div>
       </div>
     </section>
