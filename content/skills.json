@@ -1,7 +1,13 @@
 [
   {
     "group": "Programming Languages",
-    "items": ["Python", "C", "C++", "Java", "SQL"]
+    "items": [
+      "Python",
+      "C",
+      "C++",
+      "Java",
+      "SQL"
+    ]
   },
   {
     "group": "Agentic & Generative AI",
@@ -18,7 +24,30 @@
       "Vector DBs",
       "ChromaDB",
       "FAISS",
-      "Claude Code"
+      "Claude Code",
+      "Anthropic API",
+      "Gemini",
+      "Groq",
+      "Ollama",
+      "Multi-Agent Systems",
+      "LLM Evaluation",
+      "LLM-as-Judge",
+      "Structured Outputs",
+      "Prompt Caching",
+      "BM25 / Hybrid Search",
+      "Vision-Language Models",
+      "Local / Self-Hosted LLMs"
+    ]
+  },
+  {
+    "group": "LLM Reliability & Evaluation",
+    "items": [
+      "Offline Evals",
+      "Graded / Rubric Evaluation",
+      "Deterministic Guardrails",
+      "Tracing & Observability",
+      "Cost Telemetry",
+      "Regression Testing"
     ]
   },
   {
@@ -47,7 +76,13 @@
       "Docker",
       "CI/CD",
       "Git",
-      "Azure"
+      "Azure",
+      "pytest",
+      "Vercel",
+      "Render",
+      "GitHub Actions",
+      "Data Labeling Pipelines",
+      "Model Monitoring"
     ]
   },
   {
@@ -73,7 +108,13 @@
       "Async Python",
       "asyncio",
       "MongoDB",
-      "Redis"
+      "Redis",
+      "Pydantic",
+      "SQLAlchemy",
+      "PostgreSQL",
+      "SQLite",
+      "Streamlit",
+      "Pluggable Provider Interfaces"
     ]
   },
   {
@@ -88,6 +129,10 @@
   },
   {
     "group": "Languages",
-    "items": ["Hebrew — Native", "English — Fluent", "Russian — Native"]
+    "items": [
+      "Hebrew — Native",
+      "English — Fluent",
+      "Russian — Native"
+    ]
   }
 ]

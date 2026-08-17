@@ -80,7 +80,10 @@
         "RAG",
         "BM25 + embeddings",
         "Evals",
-        "Observability"
+        "Observability",
+        "Hybrid Retrieval",
+        "Deterministic Refusal",
+        "KPI Dashboard"
       ],
       "cta": {
         "label": "Read the code",
@@ -106,7 +109,10 @@
         "Pydantic",
         "Anthropic / Groq / Ollama",
         "SQLAlchemy",
-        "Streamlit"
+        "Streamlit",
+        "Prompt Caching",
+        "Cost Telemetry",
+        "ThreadPoolExecutor"
       ],
       "cta": {
         "label": "Read the code",
@@ -133,7 +139,10 @@
         "Pydantic",
         "SQLAlchemy",
         "PWA",
-        "pytest"
+        "pytest",
+        "Vision Extraction",
+        "Response Caching",
+        "Render"
       ],
       "cta": {
         "label": "Read the code",

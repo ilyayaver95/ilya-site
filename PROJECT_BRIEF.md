@@ -104,8 +104,15 @@ Single page with anchors, plus one detail route per project.
    - *Independent projects* — Northbeam, Beat the ASPP, Menu Alchemist.
      Honestly labeled as personal. This labeling is what makes the rest credible.
 5. **Live demo** — Menu Alchemist, interactive.
-6. **Skills** — grouped as on the CV. The signal-processing / RF group is a
-   feature, not filler.
+6. **Skills** — grouped as on the CV, **plus** a "LLM Reliability & Evaluation"
+   group that the CV does not have. The site deliberately claims more than the
+   CV here: everything added is demonstrated by a project card on the page, but
+   **the CV is now behind the site and should be brought up to match.** The
+   signal-processing / RF group is a feature, not filler.
+
+   Skills live in three places and drift apart easily — `skills.json`, the
+   `stack` chips per role in `experience.json`, and the `tags` per card in
+   `projects.json`. When adding a capability, check all three.
 7. **Education**, **contact**, **footer**.
 
 Every project card uses the same skeleton: problem → approach → architecture →
