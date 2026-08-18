@@ -5,7 +5,7 @@
  * fork), a radar return, and the positioning line itself: every decision
  * splits into "enumerable, decide in code" (the solid arm, terminated by a
  * blip) and "not enumerable, ask the model" (the dashed arm). One gradient,
- * violet -> cyan, same as the rest of the site.
+ * emerald -> teal, same as the rest of the site.
  */
 export default function Logo({
   className = "",

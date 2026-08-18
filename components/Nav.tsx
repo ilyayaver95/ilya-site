@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { nav, profile } from "@/lib/content";
 import Logo from "@/components/Logo";
+import ThemeToggle from "@/components/ThemeToggle";
 
 /**
  * Floating glass pill. Tracks the active section with an IntersectionObserver
@@ -89,6 +90,9 @@ export default function Nav() {
                 </a>
               </li>
             ))}
+            <li className="ml-1">
+              <ThemeToggle />
+            </li>
             {/* Hidden on phones — the hero carries the Download CV button and the pill has no room. */}
             <li className="ml-1 hidden sm:block">
               <a

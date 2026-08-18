@@ -21,7 +21,7 @@ inventing an approach.
 - Static export (`output: "export"`); `next build` emits `/out`. No server-only
   features — no route handlers, no dynamic functions, no image optimizer.
 - Mobile-first. Colors come from the CSS variables in `app/globals.css`
-  (dark-only palette, HSL triplets) — never hardcode a hex.
+  (dark default, `data-theme="light"` override, HSL triplets) — never hardcode a hex.
 
 ## Working rules
 

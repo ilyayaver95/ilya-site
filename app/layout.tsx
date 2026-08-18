@@ -37,13 +37,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         {/*
-         * Marks JS as present before first paint so `.reveal` elements can
-         * start hidden. Without JS the class is never added and everything is
-         * visible — the static export never ships blank sections.
+         * Runs before first paint. Marks JS as present so `.reveal` elements can
+         * start hidden (without JS everything is simply visible), and applies
+         * the stored theme so a light-mode visitor never sees a dark flash.
          */}
         <script
           dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('js')",
+            __html:
+              "document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light')document.documentElement.dataset.theme='light'}catch(e){}",
           }}
         />
       </head>
