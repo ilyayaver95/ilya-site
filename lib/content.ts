@@ -86,8 +86,6 @@ export type Profile = {
   cv: string;
   /** The positioning spine — see PROJECT_BRIEF.md. Change with care. */
   positioning: string;
-  /** Career arc. Every claim here must be checkable against the CV. */
-  background: string;
   quote: string;
 };
 

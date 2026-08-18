@@ -68,7 +68,7 @@
       "slug": "northbeam-support-copilot",
       "name": "Northbeam Support Copilot",
       "role": "Independent project",
-      "description": "A tool-calling support agent for a fictional radar company, built so a support engineer can ask in plain language and get an answer that shows its work. Twelve read-only tools in three layers — records, calculation, retrieval — run in a bounded loop; their real results become the evidence for one structured call. The interesting decision is the refusal layer: where the right answer is enumerable, deterministic rules decide the outcome rather than the model, so 62% of declines are settled in code and the card can say which rule fired.",
+      "description": "A tool-calling support agent for a fictional radar company, built so a support engineer can ask in plain language and get an answer that shows its work. Twelve read-only tools in three layers — records, calculation, retrieval — run in a bounded loop; their real results become the evidence for one structured call. The interesting decision is the refusal layer: where the right answer is enumerable, deterministic rules decide the outcome rather than the model, so 62% of declines are settled in code and the answer can say which rule fired.",
       "highlights": [
         "12 read-only tools across records, calculation and hybrid BM25 + embedding policy search",
         "Deterministic refusal layer — 62% of declines decided in code, not by the model",
@@ -102,7 +102,8 @@
       "highlights": [
         "Three analyst agents in parallel; a strategist reconciles one defensible verdict",
         "Opus writes the prose, Sonnet extracts the JSON — same quality, ~5× cheaper",
-        "Provider abstraction across Anthropic / Groq / Ollama, with per-call cost telemetry"
+        "Provider abstraction across Anthropic / Groq / Ollama, with per-call cost telemetry",
+        "Research tooling, not investment advice — no verdict here is a recommendation to trade"
       ],
       "tags": [
         "Multi-agent",
@@ -127,7 +128,7 @@
       "slug": "menu-alchemist",
       "name": "Menu Alchemist",
       "role": "Independent project",
-      "description": "Photograph a drink or a menu and get the reconstructed recipe — ingredients, steps, glassware, estimated ABV — plus a shopping list of only what you don't already own. The split is the point: the vision model does extraction and nothing else, while pantry detection, package sizing, serving maths and retailer matching are pure Python, so the part that has to be right every time is unit-tested rather than prompted.",
+      "description": "Photograph a drink or a menu and get the reconstructed recipe — ingredients, steps, glassware, estimated ABV — plus a shopping list of only what you don't already own. The split is the point: the vision model does extraction and nothing else, while pantry detection, package sizing, serving math and retailer matching are pure Python, so the part that has to be right every time is unit-tested rather than prompted.",
       "highlights": [
         "Pluggable vision providers behind one interface — Gemini, local Ollama, or a fake for tests",
         "Vision model extracts; deterministic Python decides what actually reaches the buy list",

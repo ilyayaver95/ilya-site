@@ -16,6 +16,9 @@ export default function Projects() {
       <div className="space-y-5">
         <Reveal>
           <TrackHeading label="Production ML · DRS RADA" />
+          <p className="mt-2 font-mono text-[11px] text-muted">
+            Method and outcome only — defense work.
+          </p>
         </Reveal>
         <Reveal delay={1}>
           <ProjectCarousel
@@ -28,10 +31,6 @@ export default function Projects() {
       <div className="space-y-5">
         <Reveal>
           <TrackHeading label="Independent projects" />
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-            Built on my own time, and public end to end — the code, the tests and
-            the decisions behind them are all linked.
-          </p>
         </Reveal>
         <Reveal delay={1}>
           <ProjectCarousel

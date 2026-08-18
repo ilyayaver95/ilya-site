@@ -80,12 +80,6 @@ export default function Hero() {
           {profile.positioning}
         </p>
 
-        <p
-          className="rise mx-auto mt-4 max-w-2xl text-balance text-sm leading-relaxed text-muted sm:text-base"
-          style={{ "--i": 5 } as React.CSSProperties}
-        >
-          {profile.background}
-        </p>
 
         <blockquote
           className="rise card-surface card-spot relative mx-auto mt-8 max-w-xl overflow-hidden rounded-card border border-border px-6 py-4 text-sm leading-relaxed text-foreground/90 sm:text-base"

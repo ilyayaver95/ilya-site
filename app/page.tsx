@@ -25,7 +25,7 @@ export default function Home() {
         <Section
           id="projects"
           title="Projects"
-          kicker="Production sensor ML at DRS RADA, and independent LLM systems built with the same discipline: deterministic where the answer is knowable, evaluated where it isn't."
+          kicker="Production sensor ML at DRS RADA, and three independent LLM systems — public end to end."
         >
           <Projects />
         </Section>
