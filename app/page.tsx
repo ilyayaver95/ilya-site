@@ -18,18 +18,12 @@ export default function Home() {
 
         <Ticker />
 
-        <Section
-          id="experience"
-          index="01"
-          title="Experience"
-          kicker="RF hardware to field engineering to data science to production ML — the hardware, the data, and the model."
-        >
+        <Section id="experience" title="Experience">
           <Timeline />
         </Section>
 
         <Section
           id="projects"
-          index="02"
           title="Projects"
           kicker="Production sensor ML at DRS RADA, and independent LLM systems built with the same discipline: deterministic where the answer is knowable, evaluated where it isn't."
         >
@@ -38,14 +32,13 @@ export default function Home() {
 
         <Section
           id="skills"
-          index="03"
           title="Skills"
-          kicker="Grouped as on the CV, plus the LLM reliability work every independent project on this page demonstrates."
+          kicker="From RF and signal processing to production ML pipelines and evaluated LLM systems — the stack behind the work above."
         >
           <Skills />
         </Section>
 
-        <Section id="education" index="04" title="Education">
+        <Section id="education" title="Education">
           <Education />
         </Section>
       </main>
