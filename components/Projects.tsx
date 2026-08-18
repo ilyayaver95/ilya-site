@@ -15,12 +15,6 @@ export default function Projects() {
     <div className="space-y-20">
       <div className="space-y-5">
         <Reveal>
-          <TrackHeading label="Production ML · DRS RADA" />
-          <p className="mt-2 font-mono text-[11px] text-muted">
-            Method and outcome only — defense work.
-          </p>
-        </Reveal>
-        <Reveal delay={1}>
           <ProjectCarousel
             projects={projects.productionMl}
             label="Production ML projects"
