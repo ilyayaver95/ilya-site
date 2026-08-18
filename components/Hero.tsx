@@ -1,6 +1,5 @@
 import { profile } from "@/lib/content";
 import Typewriter from "@/components/Typewriter";
-import Counter from "@/components/Counter";
 import Logo from "@/components/Logo";
 
 const links = [
@@ -123,26 +122,6 @@ export default function Hero() {
             </a>
           ))}
         </div>
-
-        <dl
-          className="rise mx-auto mt-14 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4"
-          style={{ "--i": 8 } as React.CSSProperties}
-        >
-          {profile.stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="card-surface card-spot rounded-card border border-border px-4 py-4 text-left"
-            >
-              <dd className="font-display text-gradient text-3xl font-bold sm:text-4xl">
-                <Counter value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
-              </dd>
-              <dt className="mt-1 text-xs text-foreground/90 sm:text-sm">{stat.label}</dt>
-              <p className="mt-0.5 font-mono text-[10px] uppercase tracking-wider text-muted">
-                {stat.note}
-              </p>
-            </div>
-          ))}
-        </dl>
       </div>
 
       <a

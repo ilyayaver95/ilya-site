@@ -317,8 +317,7 @@ The site is dark-only (both references are). The visual language is his and
 nobody else's: a radar sweep with concentric rings behind the hero (radar/RF
 since 2015), a faint grid + noise ground, violet/cyan aurora, Sora for display
 headings, scroll-reveal sections, spotlight-on-hover cards, a floating glass
-nav with active-section tracking, and animated stat counters whose numbers are
-all CV/README-checkable (`profile.json → stats`).
+nav with active-section tracking.
 
 **Logo** (`components/Logo.tsx`, `app/icon.svg`, `public/logo.svg`): a signal
 pulse that forks into a Y. Reads as the initials (I = incoming pulse, Y = fork),
