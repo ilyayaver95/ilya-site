@@ -52,9 +52,10 @@ in 2021. The defensible framing is the arc, not a single number — radar and RF
 since 2015, ML since 2021. Prefer "since 2015" over a year count so the copy
 does not silently rot. Every number on the page must be checkable against the CV.
 
-Northbeam's own line is the best single sentence available and should appear on
-the page close to verbatim: *"For every decision in an agent, ask: is the right
-answer enumerable?"*
+The hero pull quote is the positioning spine itself, compressed:
+*"Deterministic where the answer is knowable. Evaluated where it isn't.
+Instrumented either way."* Northbeam's own line — *"For every decision in an
+agent, ask: is the right answer enumerable?"* — belongs on the Northbeam card.
 
 **What NOT to do:** do not position as "Agentic AI Engineer" competing on
 framework name-dropping. The agentic work is personal projects and is labeled as

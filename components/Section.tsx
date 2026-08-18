@@ -3,15 +3,12 @@ import Reveal from "@/components/Reveal";
 
 export default function Section({
   id,
-  index,
   title,
   kicker,
   children,
   wide = false,
 }: {
   id: string;
-  /** Two-digit index shown as a mono label — "01", "02"… */
-  index: string;
   title: string;
   kicker?: string;
   children: ReactNode;
@@ -21,10 +18,7 @@ export default function Section({
     <section id={id} className="relative px-5 py-20 sm:px-8 sm:py-28">
       <div className={`mx-auto ${wide ? "max-w-5xl" : "max-w-3xl"}`}>
         <Reveal className="mb-12">
-          <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
-            <span className="text-primary">{index}</span> / {title}
-          </p>
-          <h2 className="font-display mt-3 text-3xl font-bold sm:text-5xl">
+          <h2 className="font-display text-3xl font-bold sm:text-5xl">
             <span className="text-gradient">{title}</span>
           </h2>
           {kicker ? (
