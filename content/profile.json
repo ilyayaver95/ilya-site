@@ -14,5 +14,35 @@
   "cv": "/cv.pdf",
   "positioning": "AI/ML Engineer with hands-on experience across deep learning, data science and agentic AI — taking ideas end-to-end from prototype to production. A track record of production-grade ML algorithms, refined for accuracy and efficiency.",
   "background": "Radar and RF systems since 2015 — Unit 8200, then field engineering, data science and production ML at DRS RADA. The hardware, the data, and the model.",
-  "quote": "For every decision in an agent, ask: is the right answer enumerable?"
+  "quote": "For every decision in an agent, ask: is the right answer enumerable?",
+  "stats": [
+    {
+      "value": 196,
+      "prefix": "",
+      "suffix": "",
+      "label": "offline tests",
+      "note": "Northbeam"
+    },
+    {
+      "value": 77,
+      "prefix": "",
+      "suffix": "",
+      "label": "graded evals",
+      "note": "Northbeam"
+    },
+    {
+      "value": 62,
+      "prefix": "",
+      "suffix": "%",
+      "label": "refusals decided in code",
+      "note": "Northbeam"
+    },
+    {
+      "value": 50,
+      "prefix": "~",
+      "suffix": "%",
+      "label": "less manual labeling",
+      "note": "DRS RADA · active learning"
+    }
+  ]
 }

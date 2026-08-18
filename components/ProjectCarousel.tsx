@@ -65,6 +65,7 @@ function LoopingVideo({
 
   return (
     <div className="relative aspect-video w-full border-b border-border bg-black">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-16 bg-gradient-to-t from-card/80 to-transparent" />
       <video
         // Remounting on the motion preference is what makes autoPlay actually
         // take effect — toggling the attribute on a live element does not.
@@ -171,7 +172,7 @@ export default function ProjectCarousel({
         {projects.map((project, i) => (
           <li
             key={project.slug}
-            className="group card-surface card-interactive w-full shrink-0 snap-start overflow-hidden rounded-card border border-border"
+            className="group card-surface card-spot card-interactive w-full shrink-0 snap-start overflow-hidden rounded-card border border-border"
             aria-roledescription="slide"
             aria-label={`${i + 1} of ${projects.length}`}
           >
@@ -202,11 +203,11 @@ export default function ProjectCarousel({
 
             <div className="p-5 sm:p-6">
               {/* h4: the section is h2 and each track heading is h3. */}
-              <h4 className="text-lg font-semibold transition-colors duration-300 group-hover:text-primary sm:text-xl">
+              <h4 className="font-display text-lg font-semibold transition-colors duration-300 group-hover:text-primary sm:text-2xl">
                 {project.name}
               </h4>
 
-              <p className="mt-1 font-mono text-xs text-accent">
+              <p className="mt-1.5 inline-flex rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 font-mono text-[11px] text-accent">
                 {project.role}
               </p>
 
@@ -218,7 +219,7 @@ export default function ProjectCarousel({
                 {project.highlights.map((highlight) => (
                   <li
                     key={highlight}
-                    className="relative pl-4 text-sm text-foreground before:absolute before:left-0 before:top-[0.55em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-primary/60"
+                    className="relative pl-5 text-sm text-foreground before:absolute before:left-0 before:top-[0.55em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-gradient-to-br before:from-primary before:to-accent"
                   >
                     {highlight}
                   </li>
@@ -230,7 +231,7 @@ export default function ProjectCarousel({
                   href={project.cta.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-5 inline-block rounded-md border border-border px-3 py-1.5 text-sm text-foreground transition-colors hover:border-primary hover:text-primary"
+                  className="btn-ghost mt-6 inline-flex h-10 items-center gap-2 rounded-full border border-border px-4 text-sm text-foreground"
                 >
                   {project.cta.label} →
                 </a>
@@ -240,7 +241,7 @@ export default function ProjectCarousel({
                 {project.tags.map((tag) => (
                   <li
                     key={tag}
-                    className="rounded-md border border-border bg-background/40 px-2.5 py-1 font-mono text-[11px] text-muted transition-colors duration-300 group-hover:border-primary/25 group-hover:text-foreground"
+                    className="chip rounded-md border border-border bg-background/40 px-2.5 py-1 font-mono text-[11px] text-muted"
                   >
                     {tag}
                   </li>
@@ -260,9 +261,9 @@ export default function ProjectCarousel({
               onClick={() => scrollTo(i)}
               aria-label={`Go to ${project.name}`}
               aria-current={i === active}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
+              className={`h-1.5 rounded-full transition-all duration-500 ${
                 i === active
-                  ? "w-6 bg-primary"
+                  ? "w-8 bg-gradient-to-r from-primary to-accent shadow-[0_0_10px_hsl(var(--accent)/0.6)]"
                   : "w-1.5 bg-border hover:bg-muted"
               }`}
             />
@@ -272,7 +273,7 @@ export default function ProjectCarousel({
             type="button"
             onClick={() => setPlaying((p) => !p)}
             aria-label={playing ? "Pause automatic rotation" : "Resume automatic rotation"}
-            className="ml-2 rounded-md border border-border px-2 py-1 font-mono text-[11px] text-muted transition-colors hover:border-primary hover:text-primary"
+            className="ml-2 rounded-full border border-border px-2.5 py-1 font-mono text-[11px] text-muted transition-colors hover:border-accent hover:text-accent"
           >
             {playing ? "❚❚" : "▶"}
           </button>
@@ -283,7 +284,7 @@ export default function ProjectCarousel({
             type="button"
             onClick={() => go(-1)}
             aria-label="Previous project"
-            className="rounded-md border border-border px-3 py-1.5 text-sm text-muted transition-colors hover:border-primary hover:text-primary"
+            className="btn-ghost inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-sm text-muted hover:text-foreground"
           >
             ←
           </button>
@@ -291,7 +292,7 @@ export default function ProjectCarousel({
             type="button"
             onClick={() => go(1)}
             aria-label="Next project"
-            className="rounded-md border border-border px-3 py-1.5 text-sm text-muted transition-colors hover:border-primary hover:text-primary"
+            className="btn-ghost inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-sm text-muted hover:text-foreground"
           >
             →
           </button>

@@ -10,7 +10,19 @@
       "Built performance-analysis tooling that exposed lab-to-production inference gaps and mapped model overfit and underfit regions, catching ~3 algorithmic bugs per model release before deployment.",
       "Built end-to-end ML pipelines from prototype to production. Trained and fine-tuned transformer-based models on GPU."
     ],
-    "stack": ["MLflow", "TensorFlow", "PyTorch", "Dash", "SciPy", "Optuna", "Hydra"]
+    "stack": [
+      "MLflow",
+      "TensorFlow",
+      "PyTorch",
+      "Dash",
+      "SciPy",
+      "Optuna",
+      "Hydra",
+      "Active Learning",
+      "Transformers",
+      "Fine-Tuning",
+      "GPU Training"
+    ]
   },
   {
     "role": "Data Science Analyst",
@@ -23,7 +35,17 @@
       "Automated data enrichment and labeling by integrating external APIs with radar tracking systems, recovering thousands of previously missed tracks.",
       "Applied statistical analysis and machine learning to improve system reliability under real-world conditions."
     ],
-    "stack": ["Time-Series Analysis", "Forecasting", "Anomaly Detection", "Statistical Analysis", "Python"]
+    "stack": [
+      "Time-Series Analysis",
+      "Forecasting",
+      "Anomaly Detection",
+      "Statistical Analysis",
+      "Python",
+      "NumPy",
+      "Pandas",
+      "SciPy",
+      "API Integration"
+    ]
   },
   {
     "role": "Field Engineer",
@@ -35,7 +57,13 @@
       "Conducted field experiments and radar tests to validate system performance in real-world environments.",
       "Ran customer training, technical support and system demonstrations through deployment."
     ],
-    "stack": ["Radar Systems", "Field Testing", "System Validation"]
+    "stack": [
+      "Radar Systems",
+      "Field Testing",
+      "System Validation",
+      "Customer Training",
+      "Technical Support"
+    ]
   },
   {
     "role": "RF Engineer",
@@ -47,6 +75,14 @@
       "Responsible for RF system design, including transmission and reception planning, and lab testing with Network Analyzers and Spectrum Analyzers.",
       "Led product integration, equipment validation and implementation across laboratory and field environments."
     ],
-    "stack": ["RF Design", "Signal Processing", "Network Analyzers", "Spectrum Analyzers"]
+    "stack": [
+      "RF Design",
+      "Signal Processing",
+      "Network Analyzers",
+      "Spectrum Analyzers",
+      "Product Integration",
+      "Lab Testing",
+      "Transmission Planning"
+    ]
   }
 ]
