@@ -78,7 +78,7 @@ export default function Home() {
           </div>
         </div>
         <p className="relative mx-auto mt-8 max-w-3xl text-center font-mono text-[11px] text-muted/70 sm:text-left">
-          © {new Date().getFullYear()} {profile.name}. Built with Next.js — deterministic where it can be.
+          © {new Date().getFullYear()} {profile.name}. Built with Next.js, deployed on Vercel.
         </p>
       </footer>
     </>
