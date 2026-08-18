@@ -36,7 +36,10 @@
       "Prompt Caching",
       "BM25 / Hybrid Search",
       "Vision-Language Models",
-      "Local / Self-Hosted LLMs"
+      "Local / Self-Hosted LLMs",
+      "LiteLLM",
+      "Instructor",
+      "Sentence-Transformers"
     ]
   },
   {
@@ -47,7 +50,13 @@
       "Deterministic Guardrails",
       "Tracing & Observability",
       "Cost Telemetry",
-      "Regression Testing"
+      "Regression Testing",
+      "Provider Abstraction",
+      "Model Routing",
+      "Cost Optimization",
+      "Test Doubles / Fakes",
+      "Offline-First Testing",
+      "Release Gating"
     ]
   },
   {
@@ -60,7 +69,11 @@
       "Transformers",
       "Fine-Tuning",
       "Active Learning",
-      "GPU Training"
+      "GPU Training",
+      "Human-in-the-Loop",
+      "Data-Centric ML",
+      "Uncertainty Sampling",
+      "Mislabel Detection"
     ]
   },
   {
@@ -82,7 +95,10 @@
       "Render",
       "GitHub Actions",
       "Data Labeling Pipelines",
-      "Model Monitoring"
+      "Model Monitoring",
+      "Error Analysis",
+      "Train/Serve Skew",
+      "Automated Labeling"
     ]
   },
   {
@@ -96,7 +112,10 @@
       "Time-Series Analysis",
       "Forecasting",
       "Anomaly Detection",
-      "Statistical Analysis"
+      "Statistical Analysis",
+      "Signal Denoising",
+      "Outlier Detection",
+      "Data Enrichment"
     ]
   },
   {
@@ -114,7 +133,13 @@
       "PostgreSQL",
       "SQLite",
       "Streamlit",
-      "Pluggable Provider Interfaces"
+      "Concurrency",
+      "API Versioning",
+      "Scheduling",
+      "Telegram Bot API",
+      "Flask",
+      "API Integration",
+      "Response Caching"
     ]
   },
   {
@@ -124,7 +149,10 @@
       "Radar Technology",
       "RF Systems",
       "Real-Time Systems",
-      "Algorithm Development"
+      "Algorithm Development",
+      "Radar Signal Processing",
+      "Equipment Validation",
+      "Field Data Collection"
     ]
   },
   {

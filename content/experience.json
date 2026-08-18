@@ -21,7 +21,13 @@
       "Active Learning",
       "Transformers",
       "Fine-Tuning",
-      "GPU Training"
+      "GPU Training",
+      "Python",
+      "Data Labeling Pipelines",
+      "Model Evaluation",
+      "Experiment Tracking",
+      "Uncertainty Sampling",
+      "Mislabel Detection"
     ]
   },
   {
@@ -44,7 +50,13 @@
       "NumPy",
       "Pandas",
       "SciPy",
-      "API Integration"
+      "API Integration",
+      "SQL",
+      "scikit-learn",
+      "Signal Denoising",
+      "Outlier Detection",
+      "Data Enrichment",
+      "Automated Labeling"
     ]
   },
   {
@@ -62,7 +74,10 @@
       "Field Testing",
       "System Validation",
       "Customer Training",
-      "Technical Support"
+      "Technical Support",
+      "Field Data Collection",
+      "Test Planning & Reporting",
+      "System Deployment"
     ]
   },
   {
@@ -82,7 +97,8 @@
       "Spectrum Analyzers",
       "Product Integration",
       "Lab Testing",
-      "Transmission Planning"
+      "Transmission Planning",
+      "Equipment Validation"
     ]
   }
 ]
