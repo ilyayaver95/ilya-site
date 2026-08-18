@@ -39,12 +39,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/*
          * Runs before first paint. Marks JS as present so `.reveal` elements can
          * start hidden (without JS everything is simply visible), and applies
-         * the stored theme so a light-mode visitor never sees a dark flash.
+         * the stored theme so a dark-mode visitor never sees a light flash.
          */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light')document.documentElement.dataset.theme='light'}catch(e){}",
+              "document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.dataset.theme='dark'}catch(e){}",
           }}
         />
       </head>

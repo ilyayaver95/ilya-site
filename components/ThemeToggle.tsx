@@ -5,16 +5,16 @@ import { useEffect, useState } from "react";
 type Theme = "dark" | "light";
 
 function readTheme(): Theme {
-  return document.documentElement.dataset.theme === "light" ? "light" : "dark";
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
 }
 
 /**
  * Sun/moon switch. The inline script in layout.tsx applies the stored theme
  * before first paint, so this only needs to mirror and flip the attribute.
- * Rendered as "dark" on the server; the effect syncs after hydration.
+ * Rendered as "light" (the default) on the server; the effect syncs after hydration.
  */
 export default function ThemeToggle({ className = "" }: { className?: string }) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
     // Sync with whatever the pre-paint script chose (mount-only, external state).

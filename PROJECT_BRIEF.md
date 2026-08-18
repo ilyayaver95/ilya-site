@@ -313,7 +313,7 @@ grid.
 
 ### Visual identity — "Signal"
 
-The site is dark by default (both references are), with a light theme behind a nav toggle. The visual language is his and
+The site is light by default, with the dark theme behind a nav toggle. The visual language is his and
 nobody else's: a radar sweep with concentric rings behind the hero (radar/RF
 since 2015), a faint grid + noise ground, emerald/teal aurora, Sora for display
 headings, scroll-reveal sections, spotlight-on-hover cards, a floating glass
@@ -332,7 +332,7 @@ Lifted from the reference site's stylesheet, kept as bare HSL triplets so they
 compose with alpha. Defined in `app/globals.css`; light mode carries the same
 token names. **Never hardcode a hex — always go through a token.**
 
-| Token          | Dark value    | Role                     |
+| Token          | Dark value (`data-theme="dark"`; light set lives beside it in `globals.css`) | Role |
 | -------------- | ------------- | ------------------------ |
 | `--background` | `220 26% 6%`  | cool near-black ground   |
 | `--card`       | `220 26% 8%`  | card base (→ `10%` grad) |
@@ -347,6 +347,6 @@ token names. **Never hardcode a hex — always go through a token.**
 Helper classes: `.hero-wash` (green/teal radial wash), `.card-surface`
 (gradient + shadow), `.text-gradient` (green→teal clip), `.glow`.
 
-Dark is the default theme; `data-theme="light"` on `<html>` switches the same
-token names to a light set. The nav carries a sun/moon toggle, persisted in
+Light is the default theme; `data-theme="dark"` on `<html>` switches the same
+token names to the dark set. The nav carries a sun/moon toggle, persisted in
 `localStorage("theme")` and applied before first paint by an inline script.
