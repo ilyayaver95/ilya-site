@@ -313,9 +313,9 @@ grid.
 
 ### Visual identity — "Signal"
 
-The site is dark-only (both references are). The visual language is his and
+The site is dark by default (both references are), with a light theme behind a nav toggle. The visual language is his and
 nobody else's: a radar sweep with concentric rings behind the hero (radar/RF
-since 2015), a faint grid + noise ground, violet/cyan aurora, Sora for display
+since 2015), a faint grid + noise ground, emerald/teal aurora, Sora for display
 headings, scroll-reveal sections, spotlight-on-hover cards, a floating glass
 nav with active-section tracking.
 
@@ -323,7 +323,7 @@ nav with active-section tracking.
 pulse that forks into a Y. Reads as the initials (I = incoming pulse, Y = fork),
 as a radar return, and as the positioning line — every decision splits into
 "enumerable → decide in code" (solid arm, terminated by a blip) and "not
-enumerable → ask the model" (dashed arm). Violet→cyan gradient, same as the
+enumerable → ask the model" (dashed arm). Emerald→teal gradient, same as the
 rest of the site. Swap the hero mark for a real photo when one is available.
 
 ### Design tokens
@@ -339,9 +339,14 @@ token names. **Never hardcode a hex — always go through a token.**
 | `--foreground` | `210 40% 98%` | primary text             |
 | `--muted-foreground` | `215 20% 65%` | secondary text     |
 | `--border`     | `220 26% 15%` | hairlines                |
-| `--primary`    | `264 83% 70%` | violet                   |
-| `--accent`     | `197 71% 52%` | cyan                     |
+| `--primary`    | `152 72% 52%` | emerald                  |
+| `--accent`     | `178 78% 48%` | teal                     |
+| `--tertiary`   | `92 70% 58%`  | lime (third gradient stop) |
 | `--radius`     | `0.75rem`     | card corner              |
 
-Helper classes: `.hero-wash` (violet/cyan radial wash), `.card-surface`
-(gradient + shadow), `.text-gradient` (violet→cyan clip), `.glow`.
+Helper classes: `.hero-wash` (green/teal radial wash), `.card-surface`
+(gradient + shadow), `.text-gradient` (green→teal clip), `.glow`.
+
+Dark is the default theme; `data-theme="light"` on `<html>` switches the same
+token names to a light set. The nav carries a sun/moon toggle, persisted in
+`localStorage("theme")` and applied before first paint by an inline script.
