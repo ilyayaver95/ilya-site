@@ -15,7 +15,11 @@
         "PyTorch",
         "MLflow",
         "Model Evaluation",
-        "Python"
+        "Python",
+        "Uncertainty Sampling",
+        "Mislabel Detection",
+        "Data Labeling Pipelines",
+        "Human-in-the-Loop"
       ],
       "image": "/projects/active-learning.jpg",
       "imageAlt": "Active-learning loop: a model trains on the labeled data pool, identifies uncertain samples in the unlabeled pool, and requests human review, which feeds new labels back into training."
@@ -36,7 +40,11 @@
         "SciPy",
         "Optuna",
         "Hydra",
-        "Experiment Tracking"
+        "Experiment Tracking",
+        "Error Analysis",
+        "Train/Serve Skew",
+        "Release Gating",
+        "Model Monitoring"
       ],
       "image": "/projects/performance-analysis.jpg",
       "imageAlt": "Lab versus production model behaviour side by side: clean converging accuracy curves in the lab, degraded and unstable curves in deployment, with a heatmap magnified to locate the failing regions."
@@ -57,7 +65,12 @@
         "Anomaly Detection",
         "Statistical Analysis",
         "NumPy",
-        "Pandas"
+        "Pandas",
+        "Signal Denoising",
+        "Outlier Detection",
+        "API Integration",
+        "Data Enrichment",
+        "SciPy"
       ],
       "image": "/projects/anomaly-detection.jpg",
       "imageAlt": "The two costs of unrefined sensor data: a noisy time-series stream lengthening the training cycle, and anomalies hidden inside that noise reducing detection accuracy."
@@ -76,14 +89,22 @@
       ],
       "tags": [
         "Python",
-        "Tool calling",
+        "LLM Agents",
+        "Tool-Calling",
+        "LiteLLM",
+        "Instructor",
+        "Structured Outputs",
         "RAG",
-        "BM25 + embeddings",
-        "Evals",
-        "Observability",
-        "Hybrid Retrieval",
-        "Deterministic Refusal",
-        "KPI Dashboard"
+        "BM25 / Hybrid Search",
+        "Sentence-Transformers",
+        "Deterministic Guardrails",
+        "Offline Evals",
+        "Graded / Rubric Evaluation",
+        "Tracing & Observability",
+        "KPI Dashboard",
+        "Provider Abstraction",
+        "Flask",
+        "pytest"
       ],
       "cta": {
         "label": "Read the code",
@@ -106,14 +127,21 @@
         "Research tooling, not investment advice — no verdict here is a recommendation to trade"
       ],
       "tags": [
-        "Multi-agent",
+        "Multi-Agent Systems",
+        "Structured Outputs",
         "Pydantic",
-        "Anthropic / Groq / Ollama",
-        "SQLAlchemy",
-        "Streamlit",
+        "Provider Abstraction",
+        "Anthropic API",
+        "Groq",
+        "Ollama",
         "Prompt Caching",
         "Cost Telemetry",
-        "ThreadPoolExecutor"
+        "Concurrency",
+        "SQLAlchemy",
+        "PostgreSQL",
+        "Streamlit",
+        "Scheduling",
+        "Telegram Bot API"
       ],
       "cta": {
         "label": "Read the code",
@@ -136,13 +164,21 @@
       ],
       "tags": [
         "FastAPI",
+        "REST API",
+        "API Versioning",
         "Gemini",
+        "Ollama",
+        "Vision-Language Models",
+        "Vision Extraction",
+        "Deterministic Guardrails",
+        "Provider Abstraction",
+        "Test Doubles / Fakes",
+        "pytest",
         "Pydantic",
         "SQLAlchemy",
-        "PWA",
-        "pytest",
-        "Vision Extraction",
         "Response Caching",
+        "PWA",
+        "Vanilla JS",
         "Render"
       ],
       "cta": {
