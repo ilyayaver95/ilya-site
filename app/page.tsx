@@ -5,6 +5,8 @@ import Timeline from "@/components/Timeline";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Education from "@/components/Education";
+import Ticker from "@/components/Ticker";
+import Logo from "@/components/Logo";
 import { profile } from "@/lib/content";
 
 export default function Home() {
@@ -14,8 +16,11 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
 
+        <Ticker />
+
         <Section
           id="experience"
+          index="01"
           title="Experience"
           kicker="RF hardware to field engineering to data science to production ML — the hardware, the data, and the model."
         >
@@ -24,48 +29,64 @@ export default function Home() {
 
         <Section
           id="projects"
-          title="Production ML"
-          kicker="Shipped against real sensor data, at the level of method and outcome."
+          index="02"
+          title="Projects"
+          kicker="Production sensor ML at DRS RADA, and independent LLM systems built with the same discipline: deterministic where the answer is knowable, evaluated where it isn't."
         >
           <Projects />
         </Section>
 
-        <Section id="skills" title="Skills">
+        <Section
+          id="skills"
+          index="03"
+          title="Skills"
+          kicker="Grouped as on the CV, plus the LLM reliability work every independent project on this page demonstrates."
+        >
           <Skills />
         </Section>
 
-        <Section id="education" title="Education">
+        <Section id="education" index="04" title="Education">
           <Education />
         </Section>
       </main>
 
-      <footer className="border-t border-border px-5 py-10 sm:px-8">
-        <div className="mx-auto flex max-w-3xl flex-col gap-3 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            {profile.name} · {profile.location}
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <a className="hover:text-primary" href={`mailto:${profile.email}`}>
+      <footer className="relative mt-10 overflow-hidden border-t border-border px-5 py-14 sm:px-8">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-0 h-64 w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl"
+        />
+        <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+          <a href="#top" className="flex items-center gap-3" aria-label="Back to top">
+            <Logo size={36} />
+            <div>
+              <p className="font-mono text-sm">
+                <span className="text-gradient">ilya</span>
+                <span className="text-muted">.yaverbaum</span>
+              </p>
+              <p className="text-xs text-muted">
+                {profile.title} · {profile.location}
+              </p>
+            </div>
+          </a>
+          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted">
+            <a className="transition-colors hover:text-accent" href={`mailto:${profile.email}`}>
               {profile.email}
             </a>
-            <a
-              className="hover:text-primary"
-              href={profile.github}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a className="transition-colors hover:text-accent" href={profile.github} target="_blank" rel="noreferrer">
               GitHub
             </a>
-            <a
-              className="hover:text-primary"
-              href={profile.linkedin}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a className="transition-colors hover:text-accent" href={profile.linkedin} target="_blank" rel="noreferrer">
               LinkedIn
             </a>
           </div>
         </div>
+        <p className="relative mx-auto mt-8 max-w-3xl text-center font-mono text-[11px] text-muted/70 sm:text-left">
+          © {new Date().getFullYear()} {profile.name}. Built with Next.js — deterministic where it can be.
+        </p>
       </footer>
     </>
   );

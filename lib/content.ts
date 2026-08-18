@@ -89,6 +89,20 @@ export type Profile = {
   /** Career arc. Every claim here must be checkable against the CV. */
   background: string;
   quote: string;
+  /**
+   * Hero proof-points. Every number must be checkable against the CV or a
+   * public repo README — these sit under the name and read as claims.
+   */
+  stats: Stat[];
+};
+
+export type Stat = {
+  value: number;
+  prefix: string;
+  suffix: string;
+  label: string;
+  /** Where the number comes from, shown small under the label. */
+  note: string;
 };
 
 export const profile: Profile = profileJson;
