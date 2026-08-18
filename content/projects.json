@@ -148,8 +148,10 @@
         "label": "Read the code",
         "href": "https://github.com/ilyayaver95/the_alchemist_lens"
       },
-      "image": null,
-      "imageAlt": "Photo and menu text entering a vision model, whose structured recipe passes through deterministic Python that filters out pantry staples before emitting a grouped buy list."
+      "image": "/projects/menu-alchemist.jpg",
+      "imageAlt": "Menu Alchemist demo: a photographed cocktail menu becomes a reconstructed recipe and a buy list of only the bottles you don't own.",
+      "video": "/projects/menu-alchemist-loop.mp4",
+      "videoPoster": "/projects/menu-alchemist.jpg"
     }
   ]
 }
