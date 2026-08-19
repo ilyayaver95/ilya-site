@@ -77,6 +77,8 @@ export const projects: Projects = projectsJson;
 export type Profile = {
   name: string;
   title: string;
+  /** Square headshot under /public; shown inside the hero ring. */
+  photo: string;
   /** Typewriter phrases under the name. Each must be defensible against the CV. */
   roles: string[];
   location: string;

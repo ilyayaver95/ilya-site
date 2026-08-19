@@ -295,7 +295,7 @@ import* — do that before adding anything server-shaped.
       open a `.py` file.
 - [x] Buy the domain — `ilyayaverbaum.com`, registered at GoDaddy.
 - [ ] Compress + upload the Northbeam video.
-- [ ] Photo for the hero (pending).
+- [x] Photo for the hero — `public/ilya.jpg`.
 
 ---
 
@@ -325,7 +325,7 @@ pulse that forks into a Y. Reads as the initials (I = incoming pulse, Y = fork),
 as a radar return, and as the positioning line — every decision splits into
 "enumerable → decide in code" (solid arm, terminated by a blip) and "not
 enumerable → ask the model" (dashed arm). Emerald→teal gradient, same as the
-rest of the site. Swap the hero mark for a real photo when one is available.
+rest of the site. The hero ring holds the headshot (`public/ilya.jpg`, 512² crop); the mark lives in the nav, favicon and footer.
 
 ### Design tokens
 
