@@ -86,7 +86,6 @@ export type Profile = {
   cv: string;
   /** The positioning spine — see PROJECT_BRIEF.md. Change with care. */
   positioning: string;
-  quote: string;
 };
 
 export const profile: Profile = profileJson;

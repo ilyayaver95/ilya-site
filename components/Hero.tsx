@@ -80,20 +80,9 @@ export default function Hero() {
           {profile.positioning}
         </p>
 
-
-        <blockquote
-          className="rise card-surface card-spot relative mx-auto mt-8 max-w-xl overflow-hidden rounded-card border border-border px-6 py-4 text-sm leading-relaxed text-foreground/90 sm:text-base"
-          style={{ "--i": 6 } as React.CSSProperties}
-        >
-          <span aria-hidden="true" className="font-display absolute -left-1 -top-3 text-6xl leading-none text-primary/30">
-            &ldquo;
-          </span>
-          <span className="italic">{profile.quote}</span>
-        </blockquote>
-
         <div
           className="rise mt-10 flex flex-wrap items-center justify-center gap-3"
-          style={{ "--i": 7 } as React.CSSProperties}
+          style={{ "--i": 5 } as React.CSSProperties}
         >
           <a
             href={profile.cv}
