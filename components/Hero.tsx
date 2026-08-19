@@ -1,6 +1,6 @@
 import { profile } from "@/lib/content";
 import Typewriter from "@/components/Typewriter";
-import Logo from "@/components/Logo";
+import Image from "next/image";
 
 const links = [
   { label: "GitHub", href: profile.github, icon: GitHubIcon },
@@ -36,15 +36,21 @@ export default function Hero() {
       <div className="hero-fade" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto max-w-4xl text-center">
-        {/* TODO: replace the mark with a real photo (public/ilya.jpg) once available. */}
         <div
-          className="rise avatar-glow relative mx-auto h-36 w-36 rounded-full sm:h-44 sm:w-44"
+          className="rise avatar-glow relative mx-auto h-40 w-40 rounded-full sm:h-48 sm:w-48"
           style={{ "--i": 0 } as React.CSSProperties}
         >
           <div aria-hidden="true" className="conic-ring absolute -inset-2 rounded-full opacity-60 blur-xl" />
           <div aria-hidden="true" className="conic-ring absolute inset-0 rounded-full" />
-          <div className="absolute inset-[3px] flex items-center justify-center rounded-full bg-background">
-            <Logo size={88} withRing={false} />
+          <div className="absolute inset-[3px] overflow-hidden rounded-full bg-background">
+            <Image
+              src={profile.photo}
+              alt={profile.name}
+              fill
+              sizes="192px"
+              priority
+              className="object-cover"
+            />
           </div>
         </div>
 
